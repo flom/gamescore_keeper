@@ -17,7 +17,7 @@ function IconButton(properties: IconButtonProperties): ReactElement {
     "disabled:bg-gray-300 disabled:text-gray-500 drop-shadow-lg rounded-full -top-8 text-center",
     size === "large" && "h-16 w-16",
     size !== "large" && "h-12 w-12",
-    variantType === "primary" && "bg-blue-600 text-blue-300",
+    variantType === "primary" && "bg-cyan-900 text-gray-50",
     variantType === "destruction" && "bg-red-300 text-red-800",
   );
 
