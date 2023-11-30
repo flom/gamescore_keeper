@@ -5,7 +5,7 @@ import Navbar from "../components/compositions/Navbar";
 function LandingPage(): ReactElement {
   return (
     <div>
-      <Navbar />
+      <Navbar title="Gruppen" />
       <div className="container m-auto">
         <ul>
           <li>

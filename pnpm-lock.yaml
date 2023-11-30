@@ -7,11 +7,14 @@ dependencies:
   '@tanstack/react-query':
     specifier: 4.36.1
     version: 4.36.1(react-dom@18.2.0)(react@18.2.0)
+  clsx:
+    specifier: ^2.0.0
+    version: 2.0.0
   react:
     specifier: 18.2.0
     version: 18.2.0
   react-aria:
-    specifier: ^3.30.0
+    specifier: 3.30.0
     version: 3.30.0(react-dom@18.2.0)(react@18.2.0)
   react-dom:
     specifier: 18.2.0
@@ -123,9 +126,6 @@ devDependencies:
   eslint-plugin-unicorn:
     specifier: 48.0.1
     version: 48.0.1(eslint@8.51.0)
-  husky:
-    specifier: 8.0.3
-    version: 8.0.3
   jsdom:
     specifier: 22.1.0
     version: 22.1.0
@@ -4789,6 +4789,11 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
+  /clsx@2.0.0:
+    resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
+    engines: {node: '>=6'}
+    dev: false
+
   /color-convert@1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
     dependencies:
@@ -6530,12 +6535,6 @@ packages:
   /human-signals@4.3.0:
     resolution: {integrity: sha512-zyzVyMjpGBX2+6cDVZeFPCdtOtdsxOeseRhB9tkQ6xXmGUNrcnBzdEKPy3VPNYz+4gy1oukVOXcrJCunSyc6QQ==}
     engines: {node: '>=14.18.0'}
-    dev: true
-
-  /husky@8.0.3:
-    resolution: {integrity: sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==}
-    engines: {node: '>=14'}
-    hasBin: true
     dev: true
 
   /iconv-lite@0.4.24:

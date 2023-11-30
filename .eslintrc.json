@@ -76,6 +76,7 @@
     "@typescript-eslint/member-ordering": "off",
     "@typescript-eslint/prefer-includes": "off",
     "@typescript-eslint/no-restricted-imports": "off",
+    "@typescript-eslint/consistent-type-definitions": ["error", "type"],
 
     "import/no-deprecated": "error",
     "import/order": "off",
@@ -145,6 +146,13 @@
     "react/jsx-no-constructed-context-values": "error",
     "react/jsx-no-script-url": "error",
     "react/jsx-no-useless-fragment": "error",
+    "react/require-default-props": [
+      "error",
+      {
+        "functions": "defaultArguments"
+      }
+    ],
+    "react/jsx-props-no-spreading": "off",
 
     "unicorn/filename-case": [
       "error",
