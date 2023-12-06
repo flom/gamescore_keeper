@@ -20,16 +20,16 @@ function TextField(properties: AriaTextFieldProps): ReactElement {
       <label htmlFor={id} {...labelProps}>
         {label}
       </label>
-      <input id={id} {...inputProps} ref={reference} />
-      {description ? (
-        <div {...descriptionProps} style={{ fontSize: 12 }}>
-          {description}
-        </div>
-      ) : undefined}
+      <input
+        id={id}
+        {...inputProps}
+        ref={reference}
+        className="rounded border-gray-300 focus:border-cyan-500"
+      />
+
+      {description ? <div {...descriptionProps}>{description}</div> : undefined}
       {isInvalid ? (
-        <div {...errorMessageProps} style={{ color: "red", fontSize: 12 }}>
-          {validationErrors.join(" ")}
-        </div>
+        <div {...errorMessageProps}>{validationErrors.join(" ")}</div>
       ) : undefined}
     </div>
   );

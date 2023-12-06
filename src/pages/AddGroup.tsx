@@ -2,8 +2,7 @@ import type { ReactElement } from "react";
 import Navbar from "../components/compositions/Navbar";
 import Container from "../components/compositions/Container";
 import Button from "../components/basics/Button";
-import TextField from "../components/basics/TextField";
-import IconButton from "../components/basics/IconButton";
+import PlayersInput from "../components/player/PlayersInput";
 
 function AddGroup(): ReactElement {
   return (
@@ -11,17 +10,8 @@ function AddGroup(): ReactElement {
       <Navbar title="Neue Gruppe" backButtonTo="/groups" />
       <Container>
         <div className="flex flex-col gap-2 p-2">
-          <div>
-            <TextField label="Spieler" />
-          </div>
-          <div>
-            <TextField label="Spieler" />
-          </div>
-          <div className="m-auto">
-            <IconButton>
-              <i className="fa-solid fa-plus fa-xl" />
-            </IconButton>
-          </div>
+          <PlayersInput />
+
           <div>
             <Button>Gruppe erstellen</Button>
           </div>

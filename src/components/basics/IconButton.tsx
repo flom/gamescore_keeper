@@ -4,7 +4,7 @@ import clsx from "clsx";
 
 type IconButtonProperties = AriaButtonProps & {
   size?: "large" | "normal";
-  variant?: "destruction" | "primary";
+  variant?: "destruction" | "primary" | "secondary";
 };
 
 function IconButton(properties: IconButtonProperties): ReactElement {
@@ -18,6 +18,7 @@ function IconButton(properties: IconButtonProperties): ReactElement {
     size === "large" && "h-16 w-16",
     size !== "large" && "h-12 w-12",
     variantType === "primary" && "bg-cyan-900 text-gray-50",
+    variantType === "secondary" && "bg-cyan-500 text-gray-50",
     variantType === "destruction" && "bg-red-300 text-red-800",
   );
 
