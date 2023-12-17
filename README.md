@@ -6,6 +6,7 @@
 - [PWA](https://github.com/antfu/vite-plugin-pwa)
 - [React](https://reactjs.org)
 - [TypeScript](https://www.typescriptlang.org)
+- [Zod Schema Validation](https://zod.dev/?id=schema-methods)
 - [Tailwind CSS v3](https://tailwindcss.com)
 - [Prettier](https://prettier.io)
 - [Prettier plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) 

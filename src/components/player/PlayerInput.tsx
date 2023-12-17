@@ -1,10 +1,23 @@
-import type { ReactElement } from "react";
+import type { MutableRefObject, ReactElement } from "react";
+import type { Player } from "../../models/Player";
 import TextField from "../basics/TextField";
 
-function PlayerInput(): ReactElement {
+type RefPlayerInputProps = {
+  playerRef: MutableRefObject<Player>;
+};
+
+function PlayerInput({ playerRef }: RefPlayerInputProps): ReactElement {
+  const onChange = (val: string): void => {
+    playerRef.current.name = val;
+  };
+
   return (
-    <div className="flex flex-row items-end gap-2">
-      <TextField label="Spieler" />
+    <div className="flex w-full flex-row items-end gap-2">
+      <TextField
+        label="Spieler"
+        defaultValue={playerRef.current.name}
+        onChange={onChange}
+      />
       <div>
         <input type="color" className="h-10" />
       </div>
