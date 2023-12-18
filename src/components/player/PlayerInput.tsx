@@ -7,8 +7,12 @@ type RefPlayerInputProps = {
 };
 
 function PlayerInput({ playerRef }: RefPlayerInputProps): ReactElement {
-  const onChange = (val: string): void => {
+  const onNameChange = (val: string): void => {
     playerRef.current.name = val;
+  };
+
+  const onColorChange = (color: string): void => {
+    playerRef.current.color = color;
   };
 
   return (
@@ -16,10 +20,15 @@ function PlayerInput({ playerRef }: RefPlayerInputProps): ReactElement {
       <TextField
         label="Spieler"
         defaultValue={playerRef.current.name}
-        onChange={onChange}
+        onChange={onNameChange}
       />
       <div>
-        <input type="color" className="h-10" />
+        <input
+          type="color"
+          className="h-10"
+          defaultValue={playerRef.current.color}
+          onChange={(e): void => onColorChange(e.target.value)}
+        />
       </div>
     </div>
   );

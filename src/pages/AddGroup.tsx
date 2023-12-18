@@ -11,9 +11,10 @@ function AddGroup(): ReactElement {
   const [players, setPlayers] = useState<MutableRefObject<Player>[]>([]);
 
   const onAddPlayer = (): void => {
-    setPlayers((prevState) => {
-      return [...prevState, { current: PlayerSchema.parse({}) }];
-    });
+    setPlayers((prevState) => [
+      ...prevState,
+      { current: PlayerSchema.parse({}) },
+    ]);
   };
 
   const onRemovePlayer = (player: Player): void => {
