@@ -1,4 +1,4 @@
-# Gamescore Keeper
+# GameScore Keeper
 
 ## Core Libraries and Frameworks
 
@@ -15,6 +15,10 @@
 - [Cypress](https://www.cypress.io)
 - [React Aria](https://react-spectrum.adobe.com/react-aria/index.html)
 - [Fontawesome Icons](https://fontawesome.com/search?o=r&m=free)
+
+## Initial Setup
+
+- `pnpm install`
 
 ## Scripts
 
