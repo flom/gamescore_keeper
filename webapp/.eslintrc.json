@@ -94,6 +94,8 @@
         ]
       }
     ],
+    "import/extensions": "off",
+    "import/prefer-default-export": "off",
 
     "react/no-did-update-set-state": "off",
     "react/no-find-dom-node": "off",
@@ -201,5 +203,6 @@
         "testing-library/prefer-user-event": "error"
       }
     }
-  ]
+  ],
+  "ignorePatterns": ["src/components/ui/*.*"]
 }

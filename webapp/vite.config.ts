@@ -1,9 +1,11 @@
 /// <reference types="vitest" />
+import path from "node:path";
 import eslintPlugin from "@nabla/vite-plugin-eslint";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
 import tsconfigPaths from "vite-tsconfig-paths";
+import * as url from "node:url";
 
 export default defineConfig(({ mode }) => ({
   test: {
@@ -56,4 +58,12 @@ export default defineConfig(({ mode }) => ({
           }),
         ]),
   ],
+  resolve: {
+    alias: {
+      "@": path.resolve(
+        path.dirname(url.fileURLToPath(import.meta.url)),
+        "./src",
+      ),
+    },
+  },
 }));

@@ -15,6 +15,7 @@
 - [Cypress](https://www.cypress.io)
 - [React Aria](https://react-spectrum.adobe.com/react-aria/index.html)
 - [Fontawesome Icons](https://fontawesome.com/search?o=r&m=free)
+- [shadcn/ui](https://ui.shadcn.com/)
 
 ## Initial Setup
 
@@ -32,3 +33,7 @@
 - `pnpm format` - format all files with Prettier.
 - `pnpm lint` - runs TypeScript, ESLint and Stylelint.
 - `pnpm validate` - runs `lint`, `test:ci` and `test:e2e:ci`.
+
+## Misc
+
+- `pnpm dlx shadcn-ui@latest add [component]`

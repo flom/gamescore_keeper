@@ -1,7 +1,12 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "src",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "jsx": "react-jsx",

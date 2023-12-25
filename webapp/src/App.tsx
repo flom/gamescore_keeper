@@ -1,4 +1,3 @@
-import LoadingOrError from "components/LoadingOrError";
 import type { ReactElement } from "react";
 import { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -6,6 +5,7 @@ import LandingPage from "./pages/LandingPage";
 import Contributions from "./pages/Contributions";
 import GroupsList from "./pages/GroupsList";
 import AddGroup from "./pages/AddGroup";
+import LoadingOrError from "@/components/LoadingOrError";
 
 export default function App(): ReactElement {
   return (

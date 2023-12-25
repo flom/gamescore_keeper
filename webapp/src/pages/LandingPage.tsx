@@ -6,6 +6,7 @@ function LandingPage(): ReactElement {
   return (
     <div>
       <Navbar title="Game Score" />
+
       <div className="container m-auto">
         <ul>
           <li>

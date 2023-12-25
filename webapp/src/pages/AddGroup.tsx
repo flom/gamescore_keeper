@@ -3,7 +3,7 @@ import { useState } from "react";
 import Navbar from "../components/compositions/Navbar";
 import Container from "../components/compositions/Container";
 import Button from "../components/basics/Button";
-import { type Player, PlayerSchema } from "../models/Player";
+import { type Player, PlayerSchema } from "@/models/Player";
 import PlayerInput from "../components/player/PlayerInput";
 import IconButton from "../components/basics/IconButton";
 
