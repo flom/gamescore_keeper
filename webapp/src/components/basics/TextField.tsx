@@ -24,7 +24,7 @@ function TextField(properties: AriaTextFieldProps): ReactElement {
         id={id}
         {...inputProps}
         ref={reference}
-        className="rounded border-gray-300 focus:border-cyan-500"
+        className="h-12 rounded border border-gray-300"
       />
 
       {description ? <div {...descriptionProps}>{description}</div> : undefined}

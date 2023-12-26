@@ -7,6 +7,7 @@ import { type Player, PlayerSchema } from "@/models/Player";
 import PlayerInput from "../components/player/PlayerInput";
 import IconButton from "../components/basics/IconButton";
 
+// todo https://react-hook-form.com/docs/usefieldarray
 function AddGroup(): ReactElement {
   const [players, setPlayers] = useState<MutableRefObject<Player>[]>([]);
 
