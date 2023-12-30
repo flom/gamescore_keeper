@@ -6,7 +6,7 @@
   "scripts": {
     "build": "vite build",
     "commit": "cz",
-    "dev": "vite --port 3000",
+    "dev": "vite --port 3000 --host",
     "preview": "vite preview",
     "preview:test": "start-server-and-test preview http://localhost:4173",
     "test": "vitest",

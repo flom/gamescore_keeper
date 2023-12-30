@@ -2,7 +2,7 @@ import type { ReactElement } from "react";
 import { z } from "zod";
 import { useFieldArray, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { PlayerSchema } from "@/models/Player";
+import { Player, PlayerSchema } from "@/models/Player";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -19,12 +19,17 @@ const FormSchema = z.object({
 });
 type FormType = z.infer<typeof FormSchema>;
 
-function PlayersInput(): ReactElement {
+type PlayersInputProps = {
+  onSubmit: (players: Player[]) => Promise<void> | void;
+};
+
+function PlayersInput({ onSubmit }: PlayersInputProps): ReactElement {
   const form = useForm<FormType>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      players: [PlayerSchema.parse({ name: "" })],
+      players: [PlayerSchema.parse({})],
     },
+    mode: "onBlur",
   });
   const { control, register, handleSubmit, formState } = form;
 
@@ -43,10 +48,9 @@ function PlayersInput(): ReactElement {
     }
   };
 
-  const onSubmit = async (data: FormType): Promise<void> => {
+  const onSubmitForm = async (data: FormType): Promise<void> => {
     if (!formState.isSubmitting) {
-      // todo: call onSubmit props handler
-      console.log(">>", data);
+      await onSubmit(data.players);
     }
   };
 
@@ -54,52 +58,63 @@ function PlayersInput(): ReactElement {
     <Form {...form}>
       <form
         className="mb-2 flex flex-col gap-4"
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(onSubmitForm)}
       >
-        {/*<FormField*/}
-        {/*  name="players"*/}
-        {/*  render={({ field }): ReactElement => {*/}
-        {/*    return (*/}
-        {/*      <FormItem>*/}
-        {/*        <FormLabel>Name</FormLabel>*/}
-        {/*      </FormItem>*/}
-        {/*    );*/}
-        {/*  }}*/}
-        {/*/>*/}
-
         {fields.map((field, index) => (
           <div key={field.id} className="grid grid-cols-[3fr_1fr_1fr] gap-2">
-            <FormItem>
-              <FormLabel>Name</FormLabel>
-              <FormControl>
-                <Input
-                  spellCheck={false}
-                  autoComplete="off"
-                  inputMode="text"
-                  {...register(`players.${index}.name`)}
-                />
-              </FormControl>
-            </FormItem>
-            <FormItem>
-              <FormLabel>Initialen</FormLabel>
-              <FormControl>
-                <Input
-                  spellCheck={false}
-                  type="text"
-                  autoComplete="off"
-                  {...register(`players.${index}.initials`)}
-                />
-              </FormControl>
-            </FormItem>
-            <FormItem>
-              <FormLabel>Farbe</FormLabel>
-              <FormControl>
-                <Input type="color" {...register(`players.${index}.color`)} />
-              </FormControl>
-            </FormItem>
+            <FormField
+              name={`players.${index}.name`}
+              render={(): ReactElement => (
+                <FormItem>
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input
+                      spellCheck={false}
+                      autoComplete="off"
+                      inputMode="text"
+                      autoCapitalize="words"
+                      {...register(`players.${index}.name`)}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              name={`players.${index}.initials`}
+              render={(): ReactElement => (
+                <FormItem>
+                  <FormLabel>Initialen</FormLabel>
+                  <FormControl>
+                    <Input
+                      spellCheck={false}
+                      autoComplete="off"
+                      inputMode="text"
+                      autoCapitalize="characters"
+                      {...register(`players.${index}.initials`)}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              name={`players.${index}.color`}
+              render={(): ReactElement => (
+                <FormItem>
+                  <FormLabel>Farbe</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="color"
+                      {...register(`players.${index}.color`)}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
           </div>
         ))}
-        <FormMessage />
         <div className="mx-auto">
           <Button
             type="button"
