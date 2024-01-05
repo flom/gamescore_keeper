@@ -13,7 +13,7 @@ function Navbar({
   backButtonTo = undefined,
 }: NavbarProperties): ReactElement {
   return (
-    <div className="grid h-14 grid-cols-[1fr_2fr_1fr] bg-primary/80 pl-2 pr-2 text-primary-foreground">
+    <div className="grid h-14 grid-cols-[1fr_2fr_1fr] bg-primary/70 pl-2 pr-2 text-primary-foreground">
       <div className="self-center justify-self-start">
         {backButtonTo ? (
           <IconLink to={backButtonTo}>
