@@ -13,19 +13,15 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-
-const FormSchema = z.object({
-  players: PlayerSchema.array(),
-});
-type FormType = z.infer<typeof FormSchema>;
+import { type Group, GroupSchema } from "@/models/Group";
 
 type PlayersInputProps = {
-  onSubmit: (players: Player[]) => Promise<void> | void;
+  onSubmit: (group: Group) => Promise<void> | void;
 };
 
 function PlayersInput({ onSubmit }: PlayersInputProps): ReactElement {
-  const form = useForm<FormType>({
-    resolver: zodResolver(FormSchema),
+  const form = useForm<Group>({
+    resolver: zodResolver(GroupSchema),
     defaultValues: {
       players: [PlayerSchema.parse({})],
     },
@@ -48,9 +44,9 @@ function PlayersInput({ onSubmit }: PlayersInputProps): ReactElement {
     }
   };
 
-  const onSubmitForm = async (data: FormType): Promise<void> => {
+  const onSubmitForm = async (data: Group): Promise<void> => {
     if (!formState.isSubmitting) {
-      await onSubmit(data.players);
+      await onSubmit(data);
     }
   };
 

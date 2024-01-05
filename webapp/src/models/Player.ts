@@ -1,11 +1,12 @@
 import { z } from "zod";
 import { v4 } from "uuid";
+import { MetaSchema } from "@/models/Meta";
 
 const NAME_MIN_LENGTH = 2;
 const INITIALS_MAX_LENGTH = 3;
 const COLOR_PATTERN = /#[\dA-Fa-f]{6}/;
 
-export const PlayerSchema = z.object({
+export const PlayerSchema = MetaSchema.extend({
   id: z.string().default(() => v4()),
   name: z
     .string()
