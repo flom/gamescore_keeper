@@ -1,8 +1,7 @@
 import type { ReactElement } from "react";
-import { z } from "zod";
 import { useFieldArray, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Player, PlayerSchema } from "@/models/Player";
+import { PlayerSchema } from "@/models/Player";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {

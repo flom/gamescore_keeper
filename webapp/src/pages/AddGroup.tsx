@@ -2,15 +2,18 @@ import type { ReactElement } from "react";
 import Navbar from "../components/compositions/Navbar";
 import Container from "../components/compositions/Container";
 import PlayersInput from "@/components/player/PlayersInput";
-import type { Player } from "@/models/Player";
 import { useNavigate } from "react-router-dom";
+import groupHooks from "@/api/group.hooks";
+import type { Group } from "@/models/Group";
 
 function AddGroup(): ReactElement {
   const navigate = useNavigate();
+  const { mutateAsync } = groupHooks.useCreateGroup();
 
-  const onSubmit = (players: Player[]): void => {
-    // todo: send to server, ReactQuery mutation
-    console.log("players", players);
+  const onSubmit = async (group: Group): Promise<void> => {
+    await mutateAsync({
+      group,
+    });
     navigate("/groups");
   };
 
