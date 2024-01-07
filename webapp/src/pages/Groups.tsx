@@ -1,14 +1,14 @@
 import type { ReactElement } from "react";
 import Navbar from "../components/compositions/Navbar";
-import GroupSelectionList from "@/components/groups/GroupSelectionList";
+import GroupSelection from "@/components/groups/GroupSelection";
 
-function GroupsList(): ReactElement {
+function Groups(): ReactElement {
   return (
     <>
       <Navbar title="Gruppen" addButtonTo="add" />
-      <GroupSelectionList />
+      <GroupSelection />
     </>
   );
 }
 
-export default GroupsList;
+export default Groups;

@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Contributions from "./pages/Contributions";
-import GroupsList from "./pages/GroupsList";
+import Groups from "./pages/Groups";
 import AddGroup from "./pages/AddGroup";
 import LoadingOrError from "@/components/LoadingOrError";
 import GroupPage from "@/pages/GroupPage";
@@ -14,7 +14,7 @@ export default function App(): ReactElement {
       <Suspense fallback={<LoadingOrError />}>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/groups" element={<GroupsList />} />
+          <Route path="/groups" element={<Groups />} />
           <Route path="/groups/add" element={<AddGroup />} />
           <Route path="/groups/:groupId" element={<GroupPage />} />
           <Route path="/contributions" element={<Contributions />} />
