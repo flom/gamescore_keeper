@@ -1,8 +1,7 @@
 import type { ReactElement } from "react";
-import type { ListItemProps } from "@/components/compositions/list/ListItem";
 
 export type ListProps = {
-  children: ReactElement<ListItemProps>[];
+  children: ReactElement | ReactElement[];
 };
 
 function List({ children }: ListProps): ReactElement {

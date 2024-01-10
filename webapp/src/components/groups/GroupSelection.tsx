@@ -1,7 +1,8 @@
 import type { ReactElement } from "react";
 import groupHooks from "@/api/group.hooks";
 import { getGroupLabel, type Group } from "@/models/Group";
-import { List, ListItem } from "@/components/compositions/list";
+import { List } from "@/components/compositions/list";
+import ListLinkItem from "@/components/compositions/list/ListLinkItem";
 
 function GroupSelection(): ReactElement {
   const { data: groups = [] } = groupHooks.useGroups();
@@ -9,7 +10,7 @@ function GroupSelection(): ReactElement {
   return (
     <List>
       {groups.map((group: Group) => (
-        <ListItem
+        <ListLinkItem
           key={group.id}
           to={`/groups/${group.id}`}
           label={getGroupLabel(group)}
