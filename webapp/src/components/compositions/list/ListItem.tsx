@@ -1,18 +1,32 @@
-import type { ReactElement } from "react";
-import { clsx } from "clsx";
+import type {
+  ComponentPropsWithoutRef,
+  ElementType,
+  ReactElement,
+  ReactNode,
+} from "react";
 import { listItemClass } from "@/components/compositions/list/shared";
+import clsx from "clsx";
 
-export type ListItemProps = {
-  label: string;
+type ListItemProps<C extends ElementType> = ComponentPropsWithoutRef<C> & {
+  component?: C;
+  children: ReactNode;
+  right?: ReactNode;
 };
 
-function ListItem({ label }: ListItemProps): ReactElement {
-  const classes = clsx(listItemClass);
+function ListItem<C extends ElementType = "span">({
+  component = undefined,
+  children,
+  right = undefined,
+  ...args
+}: ListItemProps<C>): ReactElement {
+  const classes = clsx(listItemClass, component && "hover:bg-secondary");
+  const Comp = component ?? "span";
 
   return (
-    <div className={classes}>
-      <span className="text-2xl">{label}</span>
-    </div>
+    <Comp {...args} className={classes}>
+      {children}
+      {right}
+    </Comp>
   );
 }
 

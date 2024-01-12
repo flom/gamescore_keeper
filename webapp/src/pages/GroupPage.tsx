@@ -2,9 +2,12 @@ import type { ReactElement } from "react";
 import Navbar from "@/components/compositions/Navbar";
 import groupHooks from "@/api/group.hooks";
 import { getGroupLabel } from "@/models/Group";
-import { List, ListItem } from "@/components/compositions/list";
+import { List } from "@/components/compositions/list";
 import ListSeparator from "@/components/compositions/list/ListSeparator";
-import ListLinkItem from "@/components/compositions/list/ListLinkItem";
+import ListTable from "@/components/compositions/list/ListTable";
+import ListTableColumn from "@/components/compositions/list/ListTableColumn";
+import ListItem from "@/components/compositions/list/ListItem";
+import { Link } from "react-router-dom";
 
 function GroupPage(): ReactElement {
   const { data: group } = groupHooks.useGroup();
@@ -18,12 +21,42 @@ function GroupPage(): ReactElement {
     <>
       <Navbar title={title} backButtonTo="/groups" />
       <List>
-        <ListItem label="Spieler" />
-        <ListItem label="Summe" />
+        <ListItem
+          right={
+            <ListTable>
+              <ListTableColumn>
+                <span className="font-bold">ABC</span>
+              </ListTableColumn>
+              <ListTableColumn>
+                <span className="font-bold">B</span>
+              </ListTableColumn>
+            </ListTable>
+          }
+        >
+          Spieler
+        </ListItem>
+        <ListItem
+          right={
+            <ListTable>
+              <ListTableColumn>8</ListTableColumn>
+              <ListTableColumn>10</ListTableColumn>
+            </ListTable>
+          }
+        >
+          Summe
+        </ListItem>
+
         <ListSeparator />
-        <ListLinkItem to="" label="Quixx" />
-        <ListLinkItem to="" label="Noch Mal!" />
-        <ListLinkItem to="" label="Skyjo" />
+
+        <ListItem component={Link} to="Quixx">
+          Quixx
+        </ListItem>
+        <ListItem component={Link} to="NochMal">
+          Noch Mal!
+        </ListItem>
+        <ListItem component={Link} to="Skyjo">
+          Skyjo
+        </ListItem>
       </List>
     </>
   );
