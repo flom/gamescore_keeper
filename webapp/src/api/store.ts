@@ -1,5 +1,6 @@
 import { type Group, GroupSchema } from "@/models/Group";
 import { PlayerSchema } from "@/models/Player";
+import { GameSchema } from "@/models/Game";
 
 const initialGroups: Group[] = [
   GroupSchema.parse({
@@ -17,6 +18,11 @@ const initialGroups: Group[] = [
       PlayerSchema.parse({ name: "Beta", initials: "B" }),
       PlayerSchema.parse({ name: "Gamma", initials: "G" }),
       PlayerSchema.parse({ name: "Delta", initials: "D" }),
+    ],
+    games: [
+      GameSchema.parse({ name: "Quixx" }),
+      GameSchema.parse({ name: "Noch Mal!" }),
+      GameSchema.parse({ name: "Skyjo" }),
     ],
   }),
 ];

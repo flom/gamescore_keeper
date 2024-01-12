@@ -1,11 +1,16 @@
 import type { ReactElement } from "react";
 import ListItem from "../compositions/list/ListItem";
 import { Link } from "react-router-dom";
+import type { Game } from "@/models/Game";
 
-function SingleGameScore(): ReactElement {
+export type SingleGameScoreProps = {
+  game: Game; // todo: GameScore required, not Game
+};
+
+function SingleGameScore({ game }: SingleGameScoreProps): ReactElement {
   return (
     <ListItem component={Link} to="Quixx">
-      Quixx
+      {game.name}
     </ListItem>
   );
 }

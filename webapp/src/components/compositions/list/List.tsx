@@ -1,7 +1,7 @@
-import type { ReactElement } from "react";
+import type { ReactElement, ReactNode } from "react";
 
 export type ListProps = {
-  children: ReactElement | ReactElement[];
+  children: ReactNode;
 };
 
 function List({ children }: ListProps): ReactElement {
