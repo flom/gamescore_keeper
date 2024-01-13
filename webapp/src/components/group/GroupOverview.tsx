@@ -6,6 +6,7 @@ import PlayerHeader from "@/components/group/PlayerHeader";
 import GrandTotal from "@/components/group/GrandTotal";
 import SingleGameScore from "@/components/group/SingleGameScore";
 import type { Game } from "@/models/Game";
+import { GameRecord } from "@/models/GameRecord";
 
 function GroupOverview(): ReactElement {
   const { data: group } = groupHooks.useGroup();
@@ -17,12 +18,12 @@ function GroupOverview(): ReactElement {
   return (
     <List>
       <PlayerHeader group={group} />
-      <GrandTotal />
+      <GrandTotal group={group} />
 
       <ListSeparator />
 
-      {group.games.map((game: Game) => (
-        <SingleGameScore key={game.id} game={game} />
+      {group.records.map((record: GameRecord) => (
+        <SingleGameScore key={record.id} group={group} gameRecord={record} />
       ))}
     </List>
   );
