@@ -5,8 +5,9 @@ import type { GameScore } from "@/models/GameScore";
 import type { Game } from "@/models/Game";
 import type { Group } from "@/models/Group";
 import type { GameRecord } from "@/models/GameRecord";
-import ListTable from "@/components/compositions/list/ListTable";
-import ListTableColumn from "@/components/compositions/list/ListTableColumn";
+import PlayerScoreListTable, {
+  type PlayerScore,
+} from "@/components/player/PlayerScoreListTable";
 
 export type SingleGameScoreProps = {
   group: Group;
@@ -17,26 +18,20 @@ function SingleGameScore({
   group,
   gameRecord,
 }: SingleGameScoreProps): ReactElement {
-  const scores: { id: string; score: number }[] = [];
+  const scores: PlayerScore[] = [];
 
   for (const player of group.players) {
     const gameScore: GameScore | undefined = gameRecord.scores.find(
       (score: GameScore) => score.playerId === player.id,
     );
-    scores.push({ id: player.id, score: gameScore?.score ?? 0 });
+    scores.push({ player, score: gameScore?.score ?? 0 });
   }
 
   const game: Game | undefined = group.games.find(
     (g: Game) => g.id === gameRecord.gameId,
   );
 
-  const scoreTable = (
-    <ListTable>
-      {scores.map((score) => (
-        <ListTableColumn key={score.id}>{score.score}</ListTableColumn>
-      ))}
-    </ListTable>
-  );
+  const scoreTable = <PlayerScoreListTable scores={scores} />;
 
   if (game === undefined) {
     return <ListItem right={scoreTable}>???</ListItem>;

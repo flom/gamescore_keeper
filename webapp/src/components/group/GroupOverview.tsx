@@ -5,8 +5,7 @@ import ListSeparator from "@/components/compositions/list/ListSeparator";
 import PlayerHeader from "@/components/group/PlayerHeader";
 import GrandTotal from "@/components/group/GrandTotal";
 import SingleGameScore from "@/components/group/SingleGameScore";
-import type { Game } from "@/models/Game";
-import { GameRecord } from "@/models/GameRecord";
+import type { GameRecord } from "@/models/GameRecord";
 
 function GroupOverview(): ReactElement {
   const { data: group } = groupHooks.useGroup();

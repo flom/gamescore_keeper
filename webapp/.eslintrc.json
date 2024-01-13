@@ -86,6 +86,7 @@
         }
       }
     ],
+    "@typescript-eslint/no-use-before-define": "off",
 
     "import/no-deprecated": "error",
     "import/order": "off",

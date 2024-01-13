@@ -18,9 +18,24 @@ const initialGroups: Group[] = [
   GroupSchema.parse({
     id: "AC606E1E-C405-4937-8F8C-A00323F6D723",
     players: [
-      PlayerSchema.parse({ id: playerId1, name: "Foo", initials: "F" }),
-      PlayerSchema.parse({ id: playerId2, name: "Bar", initials: "B" }),
-      PlayerSchema.parse({ id: playerId3, name: "Zoo", initials: "Z" }),
+      PlayerSchema.parse({
+        id: playerId1,
+        name: "Foo",
+        initials: "F",
+        color: "#00FF00",
+      }),
+      PlayerSchema.parse({
+        id: playerId2,
+        name: "Bar",
+        initials: "B",
+        color: "#FF0000",
+      }),
+      PlayerSchema.parse({
+        id: playerId3,
+        name: "Zoo",
+        initials: "Z",
+        color: "#0000FF",
+      }),
     ],
     games: [
       GameSchema.parse({ id: gameId1, name: "Quixx" }),
@@ -40,7 +55,7 @@ const initialGroups: Group[] = [
         gameId: gameId2,
         scores: [
           GameScoreSchema.parse({ playerId: playerId1, score: 3 }),
-          GameScoreSchema.parse({ playerId: playerId2, score: 2 }),
+          GameScoreSchema.parse({ playerId: playerId2, score: 3 }),
           GameScoreSchema.parse({ playerId: playerId3, score: 1 }),
         ],
       }),
