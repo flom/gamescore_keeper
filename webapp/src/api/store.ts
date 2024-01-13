@@ -46,7 +46,7 @@ const initialGroups: Group[] = [
       GameRecordSchema.parse({
         gameId: gameId1,
         scores: [
-          GameScoreSchema.parse({ playerId: playerId1, score: 1 }),
+          GameScoreSchema.parse({ playerId: playerId1, score: 12 }),
           GameScoreSchema.parse({ playerId: playerId2, score: 2 }),
           GameScoreSchema.parse({ playerId: playerId3, score: 3 }),
         ],
@@ -55,7 +55,7 @@ const initialGroups: Group[] = [
         gameId: gameId2,
         scores: [
           GameScoreSchema.parse({ playerId: playerId1, score: 3 }),
-          GameScoreSchema.parse({ playerId: playerId2, score: 3 }),
+          GameScoreSchema.parse({ playerId: playerId2, score: 123 }),
           GameScoreSchema.parse({ playerId: playerId3, score: 1 }),
         ],
       }),

@@ -32,9 +32,14 @@ function SingleGameScore({
   );
 
   const scoreTable = <PlayerScoreListTable scores={scores} />;
+  const dateLabel = new Date(gameRecord.dateTime).toLocaleDateString();
 
   if (game === undefined) {
-    return <ListItem right={scoreTable}>???</ListItem>;
+    return (
+      <ListItem right={scoreTable} top={dateLabel}>
+        ???
+      </ListItem>
+    );
   }
 
   return (
@@ -42,6 +47,7 @@ function SingleGameScore({
       component={Link}
       to={`/groups/${group.id}/game/${game.id}`}
       right={scoreTable}
+      top={dateLabel}
     >
       {game.name}
     </ListItem>

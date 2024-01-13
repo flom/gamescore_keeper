@@ -11,7 +11,7 @@ function ListTableColumn({
 }: ListTableColumnProps): ReactElement {
   return (
     <div
-      className="flex w-16 items-center justify-center border-x-2 border-secondary"
+      className="flex w-8 items-center justify-center border-x-2 border-secondary text-base"
       style={additionalStyles}
     >
       {children}

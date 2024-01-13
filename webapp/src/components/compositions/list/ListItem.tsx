@@ -11,12 +11,14 @@ type ListItemProps<C extends ElementType> = ComponentPropsWithoutRef<C> & {
   component?: C;
   children: ReactNode;
   right?: ReactNode;
+  top?: ReactNode;
 };
 
 function ListItem<C extends ElementType = "span">({
   component = undefined,
   children,
   right = undefined,
+  top = undefined,
   ...args
 }: ListItemProps<C>): ReactElement {
   const classes = clsx(listItemClass, component && "hover:bg-secondary");
@@ -24,7 +26,10 @@ function ListItem<C extends ElementType = "span">({
 
   return (
     <Comp {...args} className={classes}>
-      {children}
+      <div className="flex flex-col">
+        {top ? <span className="text-sm text-gray-400">{top}</span> : undefined}
+        {children}
+      </div>
       {right}
     </Comp>
   );
