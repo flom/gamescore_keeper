@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import { useForm } from "react-hook-form";
+import { useFieldArray, useForm } from "react-hook-form";
 import { type GameRecord, GameRecordSchema } from "@/models/GameRecord";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -12,6 +12,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import type { Group } from "@/models/Group";
+import { Textarea } from "@/components/ui/textarea";
+import { Player } from "@/models/Player";
+import { GameScoreSchema } from "@/models/GameScore";
 
 type AddGameInputProps = {
   group: Group;
@@ -20,8 +23,18 @@ type AddGameInputProps = {
 function AddGameInput({ group }: AddGameInputProps): ReactElement {
   const form = useForm<GameRecord>({
     resolver: zodResolver(GameRecordSchema),
-    defaultValues: {},
+    defaultValues: GameRecordSchema.parse({
+      scores: group.players.map((player: Player) =>
+        GameScoreSchema.parse({ playerId: player.id }),
+      ),
+    }),
     mode: "onBlur",
+  });
+
+  const { control, register } = form;
+  const { fields } = useFieldArray({
+    control,
+    name: "scores",
   });
 
   return (
@@ -45,6 +58,35 @@ function AddGameInput({ group }: AddGameInputProps): ReactElement {
               <FormLabel>Datum</FormLabel>
               <FormControl>
                 <Input {...field} type="date" />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        {fields.map((field, index) => (
+          <FormField
+            key={field.id}
+            name={`scores.${index}.score`}
+            render={(f): ReactElement => {
+              console.log(">>", f);
+              // todo: Input changes number to string
+              return (
+                <FormItem>
+                  <FormLabel>Score</FormLabel>
+                  <FormControl>
+                    <Input type="number" {...f.field} />
+                  </FormControl>
+                </FormItem>
+              );
+            }}
+          />
+        ))}
+        <FormField
+          name="notes"
+          render={({ field }): ReactElement => (
+            <FormItem>
+              <FormLabel>Notizen</FormLabel>
+              <FormControl>
+                <Textarea {...field} />
               </FormControl>
             </FormItem>
           )}
