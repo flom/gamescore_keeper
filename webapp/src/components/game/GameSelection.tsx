@@ -1,0 +1,125 @@
+import { type ReactElement, useState } from "react";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { FormControl, FormItem, FormLabel } from "@/components/ui/form";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import type { Game } from "@/models/Game";
+import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+} from "@/components/ui/command";
+import type { Group } from "@/models/Group";
+import type {
+  ControllerRenderProps,
+  FieldValues,
+  UseFormReturn,
+} from "react-hook-form";
+import type { GameRecord } from "@/models/GameRecord";
+import { NIL } from "uuid";
+
+type GameSelectionProps = {
+  form: UseFormReturn<GameRecord>;
+  field: ControllerRenderProps<FieldValues, "gameId">;
+  group: Group;
+};
+
+function GameSelection({
+  form,
+  field,
+  group,
+}: GameSelectionProps): ReactElement {
+  const [popoverVisible, setPopoverVisible] = useState<boolean>(false);
+  const [searchValue, setSearchValue] = useState<string>("");
+  const [newGame, setNewGame] = useState<string>("");
+
+  return (
+    <FormItem className="flex flex-col">
+      <FormLabel>Spiel</FormLabel>
+      <Popover open={popoverVisible} onOpenChange={setPopoverVisible}>
+        <PopoverTrigger asChild>
+          <FormControl>
+            <Button
+              variant="outline"
+              role="combobox"
+              className={cn(
+                "w-full justify-between",
+                !field.value && "text-muted-foreground",
+              )}
+            >
+              {field.value
+                ? group.games.find((game: Game) => game.id === field.value)
+                    ?.name ?? newGame
+                : "Spiel auswählen"}
+              <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+            </Button>
+          </FormControl>
+        </PopoverTrigger>
+        <PopoverContent className="w-60 p-0">
+          <Command>
+            <CommandInput
+              placeholder="Spiel suchen oder erstellen"
+              className="h-9"
+              onValueChange={setSearchValue}
+            />
+            <CommandEmpty>
+              Neues Spiel{" "}
+              <Button
+                variant="outline"
+                onClick={(): void => {
+                  form.setValue("gameId", NIL);
+                  setNewGame(searchValue);
+                  setPopoverVisible(false);
+                  setSearchValue("");
+                }}
+              >
+                {searchValue}
+              </Button>
+            </CommandEmpty>
+            <CommandGroup>
+              {group.games.map((game: Game) => (
+                <CommandItem
+                  value={game.name}
+                  key={game.id}
+                  onSelect={(): void => {
+                    form.setValue("gameId", game.id);
+                    setPopoverVisible(false);
+                    setSearchValue("");
+                  }}
+                >
+                  {game.name}
+                  <CheckIcon
+                    className={cn(
+                      "ml-auto h-4 w-4",
+                      game.id === field.value ? "opacity-100" : "opacity-0",
+                    )}
+                  />
+                </CommandItem>
+              ))}
+              <CommandItem
+                value={searchValue}
+                onSelect={(): void => {
+                  form.setValue("gameId", NIL);
+                  setNewGame(searchValue);
+                  setPopoverVisible(false);
+                  setSearchValue("");
+                }}
+              >
+                Neues Spiel: {searchValue}
+              </CommandItem>
+            </CommandGroup>
+          </Command>
+        </PopoverContent>
+      </Popover>
+    </FormItem>
+  );
+}
+
+export default GameSelection;

@@ -2,7 +2,7 @@ import type { ReactElement } from "react";
 import Navbar from "@/components/compositions/Navbar";
 import groupHooks from "@/api/group.hooks";
 import Container from "@/components/compositions/Container";
-import AddGameInput from "@/components/game/AddGameInput";
+import AddGameRecordInput from "@/components/game/AddGameRecordInput";
 import type { GameRecord } from "@/models/GameRecord";
 
 function GamePage(): ReactElement {
@@ -21,7 +21,7 @@ function GamePage(): ReactElement {
     <>
       <Navbar title="Neues Spiel" backButtonTo={`/groups/${group.id}`} />
       <Container>
-        <AddGameInput group={group} onSubmit={onSubmit} />
+        <AddGameRecordInput group={group} onSubmit={onSubmit} />
       </Container>
     </>
   );

@@ -30,15 +30,19 @@ import {
   CommandItem,
 } from "@/components/ui/command";
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
+import GameSelection from "@/components/game/GameSelection";
 
-type AddGameInputProps = {
+type AddGameRecordInputProps = {
   group: Group;
   onSubmit: (gameRecord: GameRecord) => Promise<void> | void;
 };
 
 // todo game dropdown
 // todo score styling
-function AddGameInput({ group, onSubmit }: AddGameInputProps): ReactElement {
+function AddGameRecordInput({
+  group,
+  onSubmit,
+}: AddGameRecordInputProps): ReactElement {
   const form = useForm<GameRecord>({
     resolver: zodResolver(GameRecordSchema),
     defaultValues: GameRecordSchema.parse({
@@ -70,60 +74,7 @@ function AddGameInput({ group, onSubmit }: AddGameInputProps): ReactElement {
         <FormField
           name="gameId"
           render={({ field }): ReactElement => (
-            <FormItem className="flex flex-col">
-              <FormLabel>Spiel</FormLabel>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <FormControl>
-                    <Button
-                      variant="outline"
-                      role="combobox"
-                      className={cn(
-                        "w-full justify-between",
-                        !field.value && "text-muted-foreground",
-                      )}
-                    >
-                      {field.value
-                        ? group.games.find(
-                            (game: Game) => game.id === field.value,
-                          )?.name
-                        : "Spiel auswählen"}
-                      <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                    </Button>
-                  </FormControl>
-                </PopoverTrigger>
-                <PopoverContent className="w-full p-0">
-                  <Command>
-                    <CommandInput
-                      placeholder="Spiel suchen..."
-                      className="h-9"
-                    />
-                    <CommandEmpty>Kein Spiel gefunden</CommandEmpty>
-                    <CommandGroup>
-                      {group.games.map((game: Game) => (
-                        <CommandItem
-                          value={game.name}
-                          key={game.id}
-                          onSelect={(): void => {
-                            form.setValue("gameId", game.id);
-                          }}
-                        >
-                          {game.name}
-                          <CheckIcon
-                            className={cn(
-                              "ml-auto h-4 w-4",
-                              game.id === field.value
-                                ? "opacity-100"
-                                : "opacity-0",
-                            )}
-                          />
-                        </CommandItem>
-                      ))}
-                    </CommandGroup>
-                  </Command>
-                </PopoverContent>
-              </Popover>
-            </FormItem>
+            <GameSelection form={form} field={field} group={group} />
           )}
         />
         <FormField
@@ -177,4 +128,4 @@ function AddGameInput({ group, onSubmit }: AddGameInputProps): ReactElement {
   );
 }
 
-export default AddGameInput;
+export default AddGameRecordInput;

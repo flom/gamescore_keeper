@@ -169,7 +169,8 @@
     ],
     "unicorn/no-nested-ternary": ["error"],
     "unicorn/prevent-abbreviations": "off",
-    "unicorn/no-array-reduce": "off"
+    "unicorn/no-array-reduce": "off",
+    "unicorn/no-keyword-prefix": "off"
   },
   "settings": {
     "react": {
