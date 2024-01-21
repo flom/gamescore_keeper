@@ -19,7 +19,7 @@ export function createGameRecord(
       );
 
       if (group) {
-        group.records.push(args.gameRecord);
+        group.records = [args.gameRecord, ...group.records];
         await queryClient.invalidateQueries({
           queryKey: getGroupKey(args.groupId),
         });
