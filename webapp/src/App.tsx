@@ -7,7 +7,7 @@ import Groups from "./pages/Groups";
 import AddGroup from "./pages/AddGroup";
 import LoadingOrError from "@/components/LoadingOrError";
 import GroupPage from "@/pages/GroupPage";
-import GamePage from "@/pages/GamePage";
+import AddGameRecordPage from "@/pages/AddGameRecordPage";
 
 export default function App(): ReactElement {
   return (
@@ -18,7 +18,10 @@ export default function App(): ReactElement {
           <Route path="/groups" element={<Groups />} />
           <Route path="/groups/add" element={<AddGroup />} />
           <Route path="/groups/:groupId" element={<GroupPage />} />
-          <Route path="/groups/:groupId/add-game" element={<GamePage />} />
+          <Route
+            path="/groups/:groupId/add-game"
+            element={<AddGameRecordPage />}
+          />
           <Route path="/contributions" element={<Contributions />} />
         </Routes>
       </Suspense>

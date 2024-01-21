@@ -1,4 +1,4 @@
-import type { ReactElement } from "react";
+import { ReactElement, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { type GameRecord, GameRecordSchema } from "@/models/GameRecord";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -20,7 +20,10 @@ import PlayerScoreInput from "@/components/game/PlayerScoreInput";
 
 type AddGameRecordInputProps = {
   group: Group;
-  onSubmit: (gameRecord: GameRecord) => Promise<void> | void;
+  onSubmit: (
+    gameRecord: GameRecord,
+    newGameName: string,
+  ) => Promise<void> | void;
 };
 
 function AddGameRecordInput({
@@ -39,9 +42,11 @@ function AddGameRecordInput({
 
   const { handleSubmit, formState } = form;
 
+  const newGameName = useRef<string>("");
+
   const onSubmitForm = async (data: GameRecord): Promise<void> => {
     if (!formState.isSubmitting) {
-      await onSubmit(data);
+      await onSubmit(data, newGameName.current);
     }
   };
 
@@ -54,7 +59,14 @@ function AddGameRecordInput({
         <FormField
           name="gameId"
           render={({ field }): ReactElement => (
-            <GameSelection form={form} field={field} group={group} />
+            <GameSelection
+              form={form}
+              field={field}
+              group={group}
+              onNewGame={(newName: string): void => {
+                newGameName.current = newName;
+              }}
+            />
           )}
         />
         <FormField

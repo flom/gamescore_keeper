@@ -29,12 +29,14 @@ type GameSelectionProps = {
   form: UseFormReturn<GameRecord>;
   field: ControllerRenderProps<FieldValues, "gameId">;
   group: Group;
+  onNewGame: (gameName: string) => void;
 };
 
 function GameSelection({
   form,
   field,
   group,
+  onNewGame,
 }: GameSelectionProps): ReactElement {
   const [popoverVisible, setPopoverVisible] = useState<boolean>(false);
   const [searchValue, setSearchValue] = useState<string>("");
@@ -76,6 +78,7 @@ function GameSelection({
                 onClick={(): void => {
                   form.setValue("gameId", NIL);
                   setNewGame(searchValue);
+                  onNewGame(searchValue);
                   setPopoverVisible(false);
                   setSearchValue("");
                 }}
@@ -108,6 +111,7 @@ function GameSelection({
                 onSelect={(): void => {
                   form.setValue("gameId", NIL);
                   setNewGame(searchValue);
+                  onNewGame(searchValue);
                   setPopoverVisible(false);
                   setSearchValue("");
                 }}
