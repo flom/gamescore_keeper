@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import { useFieldArray, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { type GameRecord, GameRecordSchema } from "@/models/GameRecord";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -15,30 +15,14 @@ import type { Group } from "@/models/Group";
 import { Textarea } from "@/components/ui/textarea";
 import type { Player } from "@/models/Player";
 import { GameScoreSchema } from "@/models/GameScore";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { cn } from "@/lib/utils";
-import type { Game } from "@/models/Game";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-} from "@/components/ui/command";
-import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 import GameSelection from "@/components/game/GameSelection";
+import PlayerScoreInput from "@/components/game/PlayerScoreInput";
 
 type AddGameRecordInputProps = {
   group: Group;
   onSubmit: (gameRecord: GameRecord) => Promise<void> | void;
 };
 
-// todo game dropdown
-// todo score styling
 function AddGameRecordInput({
   group,
   onSubmit,
@@ -53,11 +37,7 @@ function AddGameRecordInput({
     mode: "onBlur",
   });
 
-  const { control, register, handleSubmit, formState } = form;
-  const { fields } = useFieldArray({
-    control,
-    name: "scores",
-  });
+  const { handleSubmit, formState } = form;
 
   const onSubmitForm = async (data: GameRecord): Promise<void> => {
     if (!formState.isSubmitting) {
@@ -88,25 +68,7 @@ function AddGameRecordInput({
             </FormItem>
           )}
         />
-        {fields.map((field, index) => (
-          <FormField
-            key={field.id}
-            name={`scores.${index}.score`}
-            render={(): ReactElement => (
-              <FormItem>
-                <FormLabel>{group.players[index].name}</FormLabel>
-                <FormControl>
-                  <Input
-                    type="number"
-                    {...register(`scores.${index}.score`, {
-                      valueAsNumber: true,
-                    })}
-                  />
-                </FormControl>
-              </FormItem>
-            )}
-          />
-        ))}
+        <PlayerScoreInput group={group} form={form} />
         <FormField
           name="notes"
           render={({ field }): ReactElement => (
