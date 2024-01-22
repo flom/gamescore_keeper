@@ -1,6 +1,6 @@
 import {
   useMutation,
-  UseMutationResult,
+  type UseMutationResult,
   useQuery,
   useQueryClient,
   type UseQueryResult,
@@ -10,8 +10,9 @@ import { useParams } from "react-router-dom";
 import { getGroup } from "@/api/queries/getGroup";
 import {
   createGameRecord,
-  CreateGameRecordArgs,
+  type CreateGameRecordArgs,
 } from "@/api/mutations/createGameRecord";
+import { createGame, type CreateGameArgs } from "@/api/mutations/createGame";
 
 function useGroup(): UseQueryResult<Group> {
   const { groupId } = useParams();
@@ -29,9 +30,16 @@ function useCreateGameRecord(): UseMutationResult<
   return useMutation(createGameRecord(queryClient));
 }
 
+function useCreateGame(): UseMutationResult<string, unknown, CreateGameArgs> {
+  const queryClient = useQueryClient();
+
+  return useMutation(createGame(queryClient));
+}
+
 const groupHooks = {
   useGroup,
   useCreateGameRecord,
+  useCreateGame,
 };
 
 export default groupHooks;

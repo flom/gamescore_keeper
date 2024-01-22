@@ -11,7 +11,8 @@ function AddGameRecordPage(): ReactElement {
   const navigate = useNavigate();
 
   const { data: group } = groupHooks.useGroup();
-  const { mutateAsync } = groupHooks.useCreateGameRecord();
+  const { mutateAsync: createGameRecord } = groupHooks.useCreateGameRecord();
+  const { mutateAsync: createGame } = groupHooks.useCreateGame();
 
   if (group === undefined) {
     return <>Group not found</>;
@@ -21,17 +22,23 @@ function AddGameRecordPage(): ReactElement {
     gameRecord: GameRecord,
     newGameName: string,
   ): Promise<void> => {
-    if (gameRecord.gameId === NIL) {
-      // todo
-      // gameRecord.gameId = await createGame(newGameName);
+    let { gameId } = gameRecord;
+
+    if (gameId === NIL) {
+      gameId = await createGame({
+        groupId: group.id,
+        gameName: newGameName,
+      });
     }
-    // await createGameRecord(gameRecord);
-    // redirect back
-    console.log(">>", gameRecord, newGameName);
-    await mutateAsync({
+
+    await createGameRecord({
       groupId: group.id,
-      gameRecord,
+      gameRecord: {
+        ...gameRecord,
+        gameId,
+      },
     });
+
     navigate(`/groups/${group.id}`);
   };
 
