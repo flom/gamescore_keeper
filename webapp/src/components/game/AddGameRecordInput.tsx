@@ -1,4 +1,4 @@
-import { ReactElement, useRef } from "react";
+import { type ReactElement, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { type GameRecord, GameRecordSchema } from "@/models/GameRecord";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -94,7 +94,7 @@ function AddGameRecordInput({
         />
         <div>
           <Button type="submit" size="lg" className="w-full">
-            Gruppe erstellen
+            Spiel hinzufügen
           </Button>
         </div>
       </form>
