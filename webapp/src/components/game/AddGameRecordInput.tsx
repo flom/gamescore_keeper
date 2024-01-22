@@ -32,7 +32,7 @@ function AddGameRecordInput({
 }: AddGameRecordInputProps): ReactElement {
   const form = useForm<GameRecord>({
     resolver: zodResolver(GameRecordSchema),
-    defaultValues: GameRecordSchema.parse({
+    defaultValues: GameRecordSchema.partial({ gameId: true }).parse({
       scores: group.players.map((player: Player) =>
         GameScoreSchema.parse({ playerId: player.id }),
       ),

@@ -5,7 +5,7 @@ import { GameScoreSchema } from "@/models/GameScore";
 export const GameRecordSchema = MetaSchema.extend({
   dateTime: z.string().default(() => new Date().toISOString().slice(0, 10)),
   notes: z.string().default(""),
-  gameId: z.string().default(""),
+  gameId: z.string(),
   scores: GameScoreSchema.array().default([]),
 });
 
