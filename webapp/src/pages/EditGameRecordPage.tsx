@@ -4,7 +4,7 @@ import Container from "@/components/compositions/Container";
 import groupHooks from "@/api/group.hooks";
 import { useParams } from "react-router-dom";
 import type { GameRecord } from "@/models/GameRecord";
-import { Game } from "@/models/Game";
+import type { Game } from "@/models/Game";
 
 function EditGameRecordPage(): ReactElement {
   const { gameRecordId } = useParams();

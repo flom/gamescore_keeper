@@ -1,6 +1,5 @@
 import type { ReactElement } from "react";
 import Navbar from "@/components/compositions/Navbar";
-import Container from "@/components/compositions/Container";
 import groupHooks from "@/api/group.hooks";
 import { useParams } from "react-router-dom";
 import type { GameRecord } from "@/models/GameRecord";
