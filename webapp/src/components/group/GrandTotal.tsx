@@ -9,13 +9,14 @@ import PlayerScoreListTable, {
 
 type GrandTotalProps = {
   group: Group;
+  gameRecords: GameRecord[];
 };
 
-function GrandTotal({ group }: GrandTotalProps): ReactElement {
+function GrandTotal({ group, gameRecords }: GrandTotalProps): ReactElement {
   const scores: PlayerScore[] = [];
 
   for (const player of group.players) {
-    const playerTotalScore: number = group.records
+    const playerTotalScore: number = gameRecords
       .reduce(
         (prev: GameScore[], cur: GameRecord): GameScore[] => [
           ...prev,

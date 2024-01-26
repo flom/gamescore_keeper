@@ -17,7 +17,7 @@ function GroupOverview(): ReactElement {
   return (
     <List>
       <PlayerHeader group={group} />
-      <GrandTotal group={group} />
+      <GrandTotal group={group} gameRecords={group.records} />
 
       <ListSeparator />
 

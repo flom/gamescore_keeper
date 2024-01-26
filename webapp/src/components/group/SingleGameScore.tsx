@@ -12,11 +12,13 @@ import PlayerScoreListTable, {
 export type SingleGameScoreProps = {
   group: Group;
   gameRecord: GameRecord;
+  to?: string;
 };
 
 function SingleGameScore({
   group,
   gameRecord,
+  to = undefined,
 }: SingleGameScoreProps): ReactElement {
   const scores: PlayerScore[] = [];
 
@@ -45,7 +47,7 @@ function SingleGameScore({
   return (
     <ListItem
       component={Link}
-      to={`/groups/${group.id}/game/${game.id}`}
+      to={to ?? `/groups/${group.id}/game/${game.id}`}
       right={scoreTable}
       top={dateLabel}
     >
