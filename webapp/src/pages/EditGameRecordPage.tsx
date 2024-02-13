@@ -5,7 +5,6 @@ import groupHooks from "@/api/group.hooks";
 import { useParams } from "react-router-dom";
 import type { GameRecord } from "@/models/GameRecord";
 import type { Game } from "@/models/Game";
-import AddGameRecordInput from "@/components/game/AddGameRecordInput";
 import GameRecordForm from "@/components/game/GameRecordForm";
 import { Button } from "@/components/ui/button";
 
@@ -54,9 +53,14 @@ function EditGameRecordPage(): ReactElement {
           onSubmit={onSubmit}
           defaultValue={gameRecord}
         >
-          <Button type="submit" size="lg" className="w-full">
-            Spiel aktualisieren
-          </Button>
+          <div className="flex flex-col gap-12">
+            <Button type="submit" size="lg" className="w-full">
+              Spiel aktualisieren
+            </Button>
+            <Button type="submit" size="lg" className="w-full" variant="link">
+              Spiel löschen
+            </Button>
+          </div>
         </GameRecordForm>
       </Container>
     </>
