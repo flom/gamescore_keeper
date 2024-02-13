@@ -5,8 +5,7 @@ import groupHooks from "@/api/group.hooks";
 import { useParams } from "react-router-dom";
 import type { GameRecord } from "@/models/GameRecord";
 import type { Game } from "@/models/Game";
-import GameRecordForm from "@/components/game/GameRecordForm";
-import { Button } from "@/components/ui/button";
+import EditGameRecordInput from "@/components/game/EditGameRecordInput";
 
 function EditGameRecordPage(): ReactElement {
   const { gameRecordId } = useParams();
@@ -33,13 +32,6 @@ function EditGameRecordPage(): ReactElement {
     return <>Game not found</>;
   }
 
-  const onSubmit = async (
-    updatedGameRecord: GameRecord,
-    newGameName: string,
-  ): Promise<void> => {
-    console.log("edit", updatedGameRecord, newGameName);
-  };
-
   const dateLabel = new Date(gameRecord.dateTime).toLocaleDateString();
   return (
     <>
@@ -48,20 +40,7 @@ function EditGameRecordPage(): ReactElement {
         backButtonTo={`/groups/${group.id}/game/${gameRecord.gameId}`}
       />
       <Container>
-        <GameRecordForm
-          group={group}
-          onSubmit={onSubmit}
-          defaultValue={gameRecord}
-        >
-          <div className="flex flex-col gap-12">
-            <Button type="submit" size="lg" className="w-full">
-              Spiel aktualisieren
-            </Button>
-            <Button type="submit" size="lg" className="w-full" variant="link">
-              Spiel löschen
-            </Button>
-          </div>
-        </GameRecordForm>
+        <EditGameRecordInput group={group} gameRecord={gameRecord} />
       </Container>
     </>
   );
