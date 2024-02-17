@@ -13,11 +13,21 @@ import {
   type CreateGameRecordArgs,
 } from "@/api/mutations/createGameRecord";
 import { createGame, type CreateGameArgs } from "@/api/mutations/createGame";
+import {
+  updateGameRecord,
+  UpdateGameRecordArgs,
+} from "@/api/mutations/updateGameRecord";
 
 function useGroup(): UseQueryResult<Group> {
   const { groupId } = useParams();
 
   return useQuery(getGroup(groupId));
+}
+
+function useCreateGame(): UseMutationResult<string, unknown, CreateGameArgs> {
+  const queryClient = useQueryClient();
+
+  return useMutation(createGame(queryClient));
 }
 
 function useCreateGameRecord(): UseMutationResult<
@@ -30,16 +40,21 @@ function useCreateGameRecord(): UseMutationResult<
   return useMutation(createGameRecord(queryClient));
 }
 
-function useCreateGame(): UseMutationResult<string, unknown, CreateGameArgs> {
+function useUpdateGameRecord(): UseMutationResult<
+  unknown,
+  unknown,
+  UpdateGameRecordArgs
+> {
   const queryClient = useQueryClient();
 
-  return useMutation(createGame(queryClient));
+  return useMutation(updateGameRecord(queryClient));
 }
 
 const groupHooks = {
   useGroup,
-  useCreateGameRecord,
   useCreateGame,
+  useCreateGameRecord,
+  useUpdateGameRecord,
 };
 
 export default groupHooks;
