@@ -26,7 +26,7 @@ function Navbar({
       </div>
       <div className="self-center justify-self-end">
         {addButtonTo ? (
-          <IconLink to={addButtonTo}>
+          <IconLink to={addButtonTo} data-testid="NavbarAddButton">
             <i className="fa-solid fa-plus fa-xl" />
           </IconLink>
         ) : undefined}
