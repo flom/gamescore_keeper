@@ -30,7 +30,7 @@ function GamePage(): ReactElement {
   return (
     <>
       <Navbar title={game.name} backButtonTo={`/groups/${group.id}`} />
-      <GameOverview group={group} game={game} gameRecords={gameRecords} />
+      <GameOverview group={group} gameRecords={gameRecords} />
     </>
   );
 }

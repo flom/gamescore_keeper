@@ -68,6 +68,7 @@ function PlayersInput({ onSubmit }: PlayersInputProps): ReactElement {
                       autoComplete="off"
                       inputMode="text"
                       autoCapitalize="words"
+                      data-testid={`PlayersInput.${index}.name`}
                       {...register(`players.${index}.name`)}
                     />
                   </FormControl>
@@ -86,6 +87,7 @@ function PlayersInput({ onSubmit }: PlayersInputProps): ReactElement {
                       autoComplete="off"
                       inputMode="text"
                       autoCapitalize="characters"
+                      data-testid={`PlayersInput.${index}.initials`}
                       {...register(`players.${index}.initials`)}
                     />
                   </FormControl>
@@ -116,6 +118,7 @@ function PlayersInput({ onSubmit }: PlayersInputProps): ReactElement {
             onClick={onAddPlayer}
             size="iconLarge"
             variant="outline"
+            data-testid="PlayersInputAddPlayer"
           >
             <i className="fa-solid fa-plus fa-xl" />
             <span className="sr-only">Spieler hinzufuegen</span>
@@ -132,7 +135,12 @@ function PlayersInput({ onSubmit }: PlayersInputProps): ReactElement {
           </Button>
         </div>
         <div>
-          <Button type="submit" size="lg" className="w-full">
+          <Button
+            type="submit"
+            size="lg"
+            className="w-full"
+            data-testid="PlayersInputSubmit"
+          >
             Gruppe erstellen
           </Button>
         </div>

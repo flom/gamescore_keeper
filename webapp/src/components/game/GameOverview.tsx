@@ -1,5 +1,4 @@
 import type { ReactElement } from "react";
-import type { Game } from "@/models/Game";
 import type { GameRecord } from "@/models/GameRecord";
 import { List } from "@/components/compositions/list";
 import PlayerHeader from "@/components/group/PlayerHeader";
@@ -10,15 +9,10 @@ import type { Group } from "@/models/Group";
 
 type GameOverviewProps = {
   group: Group;
-  game: Game;
   gameRecords: GameRecord[];
 };
 
-function GameOverview({
-  group,
-  game,
-  gameRecords,
-}: GameOverviewProps): ReactElement {
+function GameOverview({ group, gameRecords }: GameOverviewProps): ReactElement {
   return (
     <List>
       <PlayerHeader group={group} />
