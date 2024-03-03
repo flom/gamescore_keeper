@@ -14,7 +14,12 @@ function GroupPage(): ReactElement {
   const title: string = getGroupLabel(group);
   return (
     <>
-      <Navbar title={title} backButtonTo="/groups" addButtonTo="./add-game" />
+      <Navbar
+        title={title}
+        backButtonTo="/groups"
+        addButtonTo="./add-game"
+        editButtonTo="./edit"
+      />
       <GroupOverview />
     </>
   );
