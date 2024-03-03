@@ -27,6 +27,11 @@ describe("Group creation", () => {
 
   it("navigates back to overview in creation form", () => {
     createGroup();
+
+    cy.findByTestId("NavbarBackButton")
+      .click()
+      .url()
+      .should("match", /\/groups$/);
   });
 
   it("Create the group", () => {
