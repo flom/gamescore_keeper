@@ -37,9 +37,13 @@ function EditGameRecordInput({
     onFinished();
   };
 
-  // todo: disable game selection
   return (
-    <GameRecordForm group={group} onSubmit={onSubmit} defaultValue={gameRecord}>
+    <GameRecordForm
+      group={group}
+      onSubmit={onSubmit}
+      defaultValue={gameRecord}
+      hasGameSelection={false}
+    >
       <div className="flex flex-col gap-12">
         <Button type="submit" size="lg" className="w-full">
           Spiel aktualisieren

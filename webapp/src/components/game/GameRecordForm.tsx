@@ -23,6 +23,7 @@ type GameRecordFormProps = {
     newGameName: string,
   ) => Promise<void> | void;
   children: ReactNode;
+  hasGameSelection?: boolean; // disable in case of edit game record
 };
 
 function GameRecordForm({
@@ -30,6 +31,7 @@ function GameRecordForm({
   defaultValue = undefined,
   onSubmit,
   children,
+  hasGameSelection = true,
 }: GameRecordFormProps): ReactElement {
   const form = useForm<GameRecord>({
     resolver: zodResolver(GameRecordSchema),
@@ -60,6 +62,7 @@ function GameRecordForm({
               form={form}
               field={field}
               group={group}
+              isDisabled={!hasGameSelection}
               onNewGame={(newName: string): void => {
                 newGameName.current = newName;
               }}

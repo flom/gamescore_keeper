@@ -30,6 +30,7 @@ type GameSelectionProps = {
   field: ControllerRenderProps<FieldValues, "gameId">;
   group: Group;
   onNewGame: (gameName: string) => void;
+  isDisabled: boolean;
 };
 
 function GameSelection({
@@ -37,6 +38,7 @@ function GameSelection({
   field,
   group,
   onNewGame,
+  isDisabled,
 }: GameSelectionProps): ReactElement {
   const [popoverVisible, setPopoverVisible] = useState<boolean>(false);
   const [searchValue, setSearchValue] = useState<string>("");
@@ -55,6 +57,7 @@ function GameSelection({
                 "w-full justify-between",
                 !field.value && "text-muted-foreground",
               )}
+              disabled={isDisabled}
             >
               {field.value
                 ? group.games.find((game: Game) => game.id === field.value)
