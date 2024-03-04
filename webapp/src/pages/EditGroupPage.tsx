@@ -3,7 +3,7 @@ import Navbar from "@/components/compositions/Navbar";
 import groupHooks from "@/api/group.hooks";
 import { getGroupLabel } from "@/models/Group";
 import Container from "@/components/compositions/Container";
-import PlayersInput from "@/components/player/PlayersInput";
+import EditGroup from "@/components/group/EditGroup";
 
 function EditGroupPage(): ReactElement {
   const { data: group } = groupHooks.useGroup();
@@ -12,7 +12,7 @@ function EditGroupPage(): ReactElement {
     return <>Group not found</>;
   }
 
-  const onSubmit = async (): Promise<void> => {
+  const onFinished = (): void => {
     // todo
   };
 
@@ -24,9 +24,7 @@ function EditGroupPage(): ReactElement {
         backButtonTo={`/groups/${group.id}`}
       />
       <Container>
-        <div className="flex flex-col gap-2 p-2">
-          <PlayersInput onSubmit={onSubmit} />
-        </div>
+        <EditGroup group={group} onFinished={onFinished} />
       </Container>
     </>
   );
