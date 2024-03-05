@@ -2,7 +2,7 @@ import type { ReactElement } from "react";
 import Navbar from "../components/compositions/Navbar";
 import GroupSelection from "@/components/groups/GroupSelection";
 
-function Groups(): ReactElement {
+function GroupsPage(): ReactElement {
   return (
     <>
       <Navbar title="Gruppen" addButtonTo="add" />
@@ -11,4 +11,4 @@ function Groups(): ReactElement {
   );
 }
 
-export default Groups;
+export default GroupsPage;

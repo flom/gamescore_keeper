@@ -10,7 +10,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { getGroupLabel, Group } from "@/models/Group";
+import { getGroupLabel, type Group } from "@/models/Group";
+import groupsHooks from "@/api/groups.hooks";
 
 type EditGroupProps = {
   group: Group;
@@ -18,9 +19,11 @@ type EditGroupProps = {
 };
 
 function EditGroup({ group, onFinished }: EditGroupProps): ReactElement {
+  const { mutateAsync: deleteGroup } = groupsHooks.useDeleteGroup();
+
   const onDeleteGroup = async (): Promise<void> => {
-    //
-    console.log("delete group");
+    await deleteGroup({ groupId: group.id });
+    onFinished();
   };
 
   const title: string = getGroupLabel(group);

@@ -4,8 +4,10 @@ import groupHooks from "@/api/group.hooks";
 import { getGroupLabel } from "@/models/Group";
 import Container from "@/components/compositions/Container";
 import EditGroup from "@/components/group/EditGroup";
+import { useNavigate } from "react-router-dom";
 
 function EditGroupPage(): ReactElement {
+  const navigate = useNavigate();
   const { data: group } = groupHooks.useGroup();
 
   if (group === undefined) {
@@ -13,7 +15,7 @@ function EditGroupPage(): ReactElement {
   }
 
   const onFinished = (): void => {
-    // todo
+    navigate("/groups");
   };
 
   const title: string = getGroupLabel(group);
