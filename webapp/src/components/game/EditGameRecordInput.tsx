@@ -4,6 +4,16 @@ import { Button } from "@/components/ui/button";
 import type { GameRecord } from "@/models/GameRecord";
 import type { Group } from "@/models/Group";
 import groupHooks from "@/api/group.hooks";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 type EditGameRecordInputProps = {
   group: Group;
@@ -48,15 +58,28 @@ function EditGameRecordInput({
         <Button type="submit" size="lg" className="w-full">
           Spiel aktualisieren
         </Button>
-        <Button
-          type="button"
-          size="lg"
-          className="w-full"
-          variant="link"
-          onClick={onDelete}
-        >
-          Spiel löschen
-        </Button>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button size="lg" type="button" variant="link" className="w-full">
+              Spiel löschen
+            </Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Spieleintrag löschen?</DialogTitle>
+              <DialogDescription>
+                Dieser Vorgang lässt sich nicht Rückgängig machen!
+              </DialogDescription>
+            </DialogHeader>
+            <DialogFooter>
+              <DialogClose asChild>
+                <Button variant="destructive" onClick={onDelete}>
+                  Spiel löschen
+                </Button>
+              </DialogClose>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </div>
     </GameRecordForm>
   );
