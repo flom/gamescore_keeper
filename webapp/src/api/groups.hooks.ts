@@ -8,7 +8,7 @@ import {
 import type { Group } from "@/models/Group";
 import { getGroups } from "@/api/queries/getGroups";
 import { createGroup, type CreateGroupArgs } from "@/api/mutations/createGroup";
-import { deleteGroup, DeleteGroupArgs } from "@/api/mutations/deleteGroup";
+import { deleteGroup, type DeleteGroupArgs } from "@/api/mutations/deleteGroup";
 
 function useGroups(): UseQueryResult<Group[]> {
   return useQuery(getGroups());
