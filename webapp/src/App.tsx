@@ -1,5 +1,4 @@
-import type { ReactElement } from "react";
-import { Suspense } from "react";
+import { type ReactElement, Suspense, useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Contributions from "./pages/Contributions";
@@ -11,26 +10,49 @@ import AddGameRecordPage from "@/pages/AddGameRecordPage";
 import EditGameRecordPage from "@/pages/EditGameRecordPage";
 import GamePage from "@/pages/GamePage";
 import EditGroupPage from "@/pages/EditGroupPage";
+import PocketBaseContext from "@/contexts/PocketBaseContext";
+import LoginPage from "@/pages/LoginPage";
 
 export default function App(): ReactElement {
+  const pb = useContext(PocketBaseContext);
+
+  console.log(pb.authStore.isAuthRecord);
+
+  // todo: if pb.authStore.isAuthRecord=false -> render LoginPage ELSE Routes
+  if (pb.authStore.isAuthRecord) {
+    return (
+      <BrowserRouter>
+        <Suspense fallback={<LoadingOrError />}>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/groups" element={<GroupsPage />} />
+            <Route path="/groups/add" element={<AddGroup />} />
+            <Route path="/groups/:groupId" element={<GroupPage />} />
+            <Route path="/groups/:groupId/edit" element={<EditGroupPage />} />
+            <Route
+              path="/groups/:groupId/add-game"
+              element={<AddGameRecordPage />}
+            />
+            <Route
+              path="/groups/:groupId/game/:gameId"
+              element={<GamePage />}
+            />
+            <Route
+              path="/groups/:groupId/edit-game/:gameRecordId"
+              element={<EditGameRecordPage />}
+            />
+            <Route path="/contributions" element={<Contributions />} />
+          </Routes>
+        </Suspense>
+      </BrowserRouter>
+    );
+  }
+
   return (
     <BrowserRouter>
       <Suspense fallback={<LoadingOrError />}>
         <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/groups" element={<GroupsPage />} />
-          <Route path="/groups/add" element={<AddGroup />} />
-          <Route path="/groups/:groupId" element={<GroupPage />} />
-          <Route path="/groups/:groupId/edit" element={<EditGroupPage />} />
-          <Route
-            path="/groups/:groupId/add-game"
-            element={<AddGameRecordPage />}
-          />
-          <Route path="/groups/:groupId/game/:gameId" element={<GamePage />} />
-          <Route
-            path="/groups/:groupId/edit-game/:gameRecordId"
-            element={<EditGameRecordPage />}
-          />
+          <Route path="/" element={<LoginPage />} />
           <Route path="/contributions" element={<Contributions />} />
         </Routes>
       </Suspense>
