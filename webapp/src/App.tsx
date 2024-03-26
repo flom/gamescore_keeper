@@ -16,9 +16,6 @@ import LoginPage from "@/pages/LoginPage";
 export default function App(): ReactElement {
   const pb = useContext(PocketBaseContext);
 
-  console.log(pb.authStore.isAuthRecord);
-
-  // todo: if pb.authStore.isAuthRecord=false -> render LoginPage ELSE Routes
   if (pb.authStore.isAuthRecord) {
     return (
       <BrowserRouter>

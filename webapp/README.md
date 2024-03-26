@@ -14,7 +14,7 @@
 - [Vitest](https://vitest.dev/)
 - [Cypress](https://www.cypress.io)
 - [React Aria](https://react-spectrum.adobe.com/react-aria/index.html)
-- [Fontawesome Icons](https://fontawesome.com/search?o=r&m=free)
+- [Fontawesome Icons](https://fontawesome.com/search?o=r&m=free) `fa-solid`
 - [shadcn/ui](https://ui.shadcn.com/)
 - [react hook form](https://react-hook-form.com/docs/)
 

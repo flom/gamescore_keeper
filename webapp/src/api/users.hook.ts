@@ -10,8 +10,17 @@ function useLogin(): (userName: string, password: string) => Promise<void> {
   };
 }
 
+function useLogout(): () => void {
+  const pb: PocketBase = useContext(PocketBaseContext);
+
+  return (): void => {
+    pb.authStore.clear();
+  };
+}
+
 const usersHook = {
   useLogin,
+  useLogout,
 };
 
 export default usersHook;
