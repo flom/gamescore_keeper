@@ -9,14 +9,14 @@ function LogoutButton(): ReactElement {
 
   const onLogout = (): void => {
     logout();
-    navigate("");
+    navigate("/");
   };
 
   return (
     <div className="fixed bottom-2 left-2">
       <Button variant="destructive" onClick={onLogout}>
-        Ausloggen &nbsp;
         <i className="fa-solid fa-arrow-right-from-bracket" />
+        &nbsp; Ausloggen
       </Button>
     </div>
   );

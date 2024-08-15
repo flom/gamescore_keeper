@@ -1,4 +1,4 @@
-import { type ReactElement, Suspense, useContext } from "react";
+import { type ReactElement, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Contributions from "./pages/Contributions";
@@ -10,18 +10,17 @@ import AddGameRecordPage from "@/pages/AddGameRecordPage";
 import EditGameRecordPage from "@/pages/EditGameRecordPage";
 import GamePage from "@/pages/GamePage";
 import EditGroupPage from "@/pages/EditGroupPage";
-import PocketBaseContext from "@/contexts/PocketBaseContext";
 import LoginPage from "@/pages/LoginPage";
+import Root from "@/pages/Root";
 
 export default function App(): ReactElement {
-  const pb = useContext(PocketBaseContext);
-
-  if (pb.authStore.isAuthRecord) {
-    return (
-      <BrowserRouter>
-        <Suspense fallback={<LoadingOrError />}>
-          <Routes>
+  return (
+    <BrowserRouter>
+      <Suspense fallback={<LoadingOrError />}>
+        <Routes>
+          <Route path="/" element={<Root />}>
             <Route path="/" element={<LandingPage />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="/groups" element={<GroupsPage />} />
             <Route path="/groups/add" element={<AddGroup />} />
             <Route path="/groups/:groupId" element={<GroupPage />} />
@@ -39,18 +38,7 @@ export default function App(): ReactElement {
               element={<EditGameRecordPage />}
             />
             <Route path="/contributions" element={<Contributions />} />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
-    );
-  }
-
-  return (
-    <BrowserRouter>
-      <Suspense fallback={<LoadingOrError />}>
-        <Routes>
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/contributions" element={<Contributions />} />
+          </Route>
         </Routes>
       </Suspense>
     </BrowserRouter>

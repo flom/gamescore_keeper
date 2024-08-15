@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import Container from "@/components/compositions/Container";
 import { Button } from "@/components/ui/button";
 import usersHook from "@/api/users.hook";
+import { useNavigate } from "react-router-dom";
 
 const loginSchema = z.object({
   userName: z.string().default(""),
@@ -23,6 +24,7 @@ const loginSchema = z.object({
 type LoginType = z.infer<typeof loginSchema>;
 
 function LoginPage(): ReactElement {
+  const navigate = useNavigate();
   const loginUser = usersHook.useLogin();
 
   const form = useForm<LoginType>({
@@ -33,6 +35,7 @@ function LoginPage(): ReactElement {
   const onSubmit = async (values: LoginType): Promise<void> => {
     try {
       await loginUser(values.userName, values.password);
+      navigate("/");
     } catch {
       console.log("ERROR");
     }

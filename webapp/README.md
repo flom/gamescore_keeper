@@ -5,6 +5,7 @@
 - [Vite](https://vitejs.dev)
 - [PWA](https://github.com/antfu/vite-plugin-pwa)
 - [React](https://reactjs.org)
+- [React Router](https://reactrouter.com/en/main)
 - [TypeScript](https://www.typescriptlang.org)
 - [Zod Schema Validation](https://zod.dev/)
 - [Tailwind CSS v3](https://tailwindcss.com)
