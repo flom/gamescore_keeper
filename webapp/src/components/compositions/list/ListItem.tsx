@@ -22,6 +22,7 @@ function ListItem<C extends ElementType = "span">({
   ...args
 }: ListItemProps<C>): ReactElement {
   const classes = clsx(listItemClass, component && "hover:bg-secondary");
+  // eslint-disable-next-line no-useless-assignment
   const Comp = component ?? "span";
 
   return (

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-magic-numbers */
 import { type Group, GroupSchema } from "@/models/Group";
 import { PlayerSchema } from "@/models/Player";
 import { GameSchema } from "@/models/Game";
