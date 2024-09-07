@@ -10,7 +10,7 @@
 - [Zod Schema Validation](https://zod.dev/)
 - [Tailwind CSS v3](https://tailwindcss.com)
 - [Prettier](https://prettier.io)
-- [Prettier plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) 
+- [Prettier plugin](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)
 - [ESLint](https://eslint.org)
 - [Vitest](https://vitest.dev/)
 - [Cypress](https://www.cypress.io)
