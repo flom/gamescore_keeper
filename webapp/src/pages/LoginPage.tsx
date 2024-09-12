@@ -1,4 +1,4 @@
-import type { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import Navbar from "@/components/compositions/Navbar";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -16,6 +16,7 @@ import Container from "@/components/compositions/Container";
 import { Button } from "@/components/ui/button";
 import usersHook from "@/api/users.hook";
 import { useNavigate } from "react-router-dom";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 const loginSchema = z.object({
   userName: z.string().default(""),
@@ -32,12 +33,15 @@ function LoginPage(): ReactElement {
     defaultValues: loginSchema.parse({}),
   });
 
+  const [showError, setShowError] = useState<boolean>(false);
+
   const onSubmit = async (values: LoginType): Promise<void> => {
+    setShowError(false);
     try {
       await loginUser(values.userName, values.password);
       navigate("/");
     } catch {
-      console.log("ERROR");
+      setShowError(true);
     }
   };
 
@@ -75,6 +79,12 @@ function LoginPage(): ReactElement {
             <Button type="submit">Login</Button>
           </form>
         </Form>
+
+        {showError ? (
+          <Alert className="mt-4" variant="destructive">
+            <AlertTitle>Ungültiger Benutzer oder Passwort</AlertTitle>
+          </Alert>
+        ) : undefined}
       </Container>
     </div>
   );

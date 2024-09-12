@@ -68,6 +68,7 @@ export default defineConfig(({ mode }) => ({
   },
   server: {
     proxy: {
+      // /api is the base-url of Pocketbase
       "/api": {
         target: "http://127.0.0.1:8090",
         changeOrigin: true,
