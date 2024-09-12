@@ -1,4 +1,4 @@
-import { ReactElement, useState } from "react";
+import { type ReactElement, useState } from "react";
 import Navbar from "@/components/compositions/Navbar";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -16,7 +16,7 @@ import Container from "@/components/compositions/Container";
 import { Button } from "@/components/ui/button";
 import usersHook from "@/api/users.hook";
 import { useNavigate } from "react-router-dom";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Alert, AlertTitle } from "@/components/ui/alert";
 
 const loginSchema = z.object({
   userName: z.string().default(""),
