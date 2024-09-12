@@ -38,3 +38,4 @@
 ## Misc
 
 - `pnpm dlx shadcn-ui@latest add [component]`
+- project structure based on https://github.com/alan2207/bulletproof-react/tree/master

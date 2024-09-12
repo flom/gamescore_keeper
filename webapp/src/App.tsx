@@ -10,7 +10,7 @@ import AddGameRecordPage from "@/pages/AddGameRecordPage";
 import EditGameRecordPage from "@/pages/EditGameRecordPage";
 import GamePage from "@/pages/GamePage";
 import EditGroupPage from "@/pages/EditGroupPage";
-import LoginPage from "@/pages/LoginPage";
+import LoginPage from "@/app/routes/LoginPage";
 import Root from "@/pages/Root";
 
 export default function App(): ReactElement {
