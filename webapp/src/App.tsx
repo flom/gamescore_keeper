@@ -2,7 +2,7 @@ import { type ReactElement, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Contributions from "./pages/Contributions";
-import GroupsPage from "./pages/GroupsPage";
+import GroupsPage from "./app/routes/GroupsPage";
 import AddGroup from "./pages/AddGroup";
 import LoadingOrError from "@/components/LoadingOrError";
 import GroupPage from "@/pages/GroupPage";
