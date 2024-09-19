@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import PocketBaseContext from "@/contexts/PocketBaseContext";
 import type PocketBase from "pocketbase";
+import usePocketBase from "@/hooks/usePocketBase";
 
 function useLogin(): (userName: string, password: string) => Promise<void> {
-  const pb: PocketBase = useContext(PocketBaseContext);
+  const pb: PocketBase = usePocketBase();
 
   return async (userName: string, password: string): Promise<void> => {
     await pb.collection("users").authWithPassword(userName, password);
@@ -11,7 +10,7 @@ function useLogin(): (userName: string, password: string) => Promise<void> {
 }
 
 function useLogout(): () => void {
-  const pb: PocketBase = useContext(PocketBaseContext);
+  const pb: PocketBase = usePocketBase();
 
   return (): void => {
     pb.authStore.clear();
