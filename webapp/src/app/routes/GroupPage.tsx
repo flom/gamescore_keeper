@@ -1,14 +1,14 @@
 import type { ReactElement } from "react";
 import Navbar from "@/components/compositions/Navbar";
 import { getGroupLabel } from "@/models/Group";
-import groupHooks from "@/api/group.hooks";
-import GroupOverview from "@/components/group/GroupOverview";
+import GroupOverview from "@/features/group/components/GroupOverview";
+import { useGroup } from "@/features/group/api/getGroup";
 
 function GroupPage(): ReactElement {
-  const { data: group } = groupHooks.useGroup();
+  const { data: group } = useGroup();
 
   if (group === undefined) {
-    return <>Group not found</>;
+    return <>Gruppe nicht gefunden.</>;
   }
 
   const title: string = getGroupLabel(group);

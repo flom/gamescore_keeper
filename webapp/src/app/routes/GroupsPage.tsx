@@ -1,14 +1,21 @@
 import type { ReactElement } from "react";
 import Navbar from "../../components/compositions/Navbar";
-import GroupSelection from "@/features/groups/components/GroupSelection";
+import GroupsList from "@/features/groups/components/GroupsList";
 import LogoutButton from "@/features/logout/components/LogoutButton";
+import { useNavigate } from "react-router-dom";
 
 function GroupsPage(): ReactElement {
+  const navigate = useNavigate();
+
+  const onLogout = (): void => {
+    navigate("/");
+  };
+
   return (
     <>
       <Navbar title="Gruppen" addButtonTo="add" />
-      <GroupSelection />
-      <LogoutButton />
+      <GroupsList />
+      <LogoutButton onLogout={onLogout} />
     </>
   );
 }

@@ -1,20 +1,22 @@
 import type { ReactElement } from "react";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
 import { useLogoutUser } from "@/features/logout/api/logoutUser";
 
-function LogoutButton(): ReactElement {
-  const navigate = useNavigate();
+type LogoutButtonProperties = {
+  onLogout: () => unknown;
+};
+
+function LogoutButton({ onLogout }: LogoutButtonProperties): ReactElement {
   const logout = useLogoutUser();
 
-  const onLogout = (): void => {
+  const onLogoutClicked = (): void => {
     logout();
-    navigate("/");
+    onLogout();
   };
 
   return (
     <div className="fixed bottom-2 left-2">
-      <Button variant="destructive" onClick={onLogout}>
+      <Button variant="destructive" onClick={onLogoutClicked}>
         <i className="fa-solid fa-arrow-right-from-bracket" />
         &nbsp; Ausloggen
       </Button>

@@ -1,13 +1,8 @@
 import {
   useMutation,
   type UseMutationResult,
-  useQuery,
   useQueryClient,
-  type UseQueryResult,
 } from "@tanstack/react-query";
-import type { Group } from "@/models/Group";
-import { useParams } from "react-router-dom";
-import { getGroup } from "@/api/queries/getGroup";
 import {
   createGameRecord,
   type CreateGameRecordArgs,
@@ -21,12 +16,6 @@ import {
   deleteGameRecord,
   type DeleteGameRecordArgs,
 } from "@/api/mutations/deleteGameRecord";
-
-function useGroup(): UseQueryResult<Group> {
-  const { groupId } = useParams();
-
-  return useQuery(getGroup(groupId));
-}
 
 function useCreateGame(): UseMutationResult<string, unknown, CreateGameArgs> {
   const queryClient = useQueryClient();
@@ -65,7 +54,6 @@ function useDeleteGameRecord(): UseMutationResult<
 }
 
 const groupHooks = {
-  useGroup,
   useCreateGame,
   useCreateGameRecord,
   useUpdateGameRecord,

@@ -4,7 +4,7 @@ import { List, ListItem } from "@/components/compositions/list";
 import { Link } from "react-router-dom";
 import { useGroups } from "@/features/groups/api/getGroups";
 
-function GroupSelection(): ReactElement {
+function GroupsList(): ReactElement {
   const { data: groups = [] } = useGroups();
 
   return (
@@ -18,4 +18,4 @@ function GroupSelection(): ReactElement {
   );
 }
 
-export default GroupSelection;
+export default GroupsList;

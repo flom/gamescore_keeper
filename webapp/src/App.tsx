@@ -5,7 +5,7 @@ import Contributions from "./pages/Contributions";
 import GroupsPage from "./app/routes/GroupsPage";
 import AddGroup from "./pages/AddGroup";
 import LoadingOrError from "@/components/LoadingOrError";
-import GroupPage from "@/pages/GroupPage";
+import GroupPage from "@/app/routes/GroupPage";
 import AddGameRecordPage from "@/pages/AddGameRecordPage";
 import EditGameRecordPage from "@/pages/EditGameRecordPage";
 import GamePage from "@/pages/GamePage";

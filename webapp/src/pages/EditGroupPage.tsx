@@ -1,14 +1,14 @@
 import type { ReactElement } from "react";
 import Navbar from "@/components/compositions/Navbar";
-import groupHooks from "@/api/group.hooks";
 import { getGroupLabel } from "@/models/Group";
 import Container from "@/components/compositions/Container";
 import EditGroup from "@/components/group/EditGroup";
 import { useNavigate } from "react-router-dom";
+import { useGroup } from "@/features/group/api/getGroup";
 
 function EditGroupPage(): ReactElement {
   const navigate = useNavigate();
-  const { data: group } = groupHooks.useGroup();
+  const { data: group } = useGroup();
 
   if (group === undefined) {
     return <>Group not found</>;

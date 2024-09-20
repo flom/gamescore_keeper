@@ -1,15 +1,15 @@
 import type { ReactElement } from "react";
 import Navbar from "@/components/compositions/Navbar";
-import groupHooks from "@/api/group.hooks";
 import { useParams } from "react-router-dom";
 import type { GameRecord } from "@/models/GameRecord";
 import type { Game } from "@/models/Game";
 import GameOverview from "@/components/game/GameOverview";
+import { useGroup } from "@/features/group/api/getGroup";
 
 function GamePage(): ReactElement {
   const { gameId } = useParams();
 
-  const { data: group } = groupHooks.useGroup();
+  const { data: group } = useGroup();
 
   if (group === undefined) {
     return <>Group not found</>;
