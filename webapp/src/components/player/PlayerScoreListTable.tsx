@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import type { Player } from "@/models/Player";
+import type { Player } from "@/types/Player";
 import ListTable from "@/components/compositions/list/ListTable";
 import ListTableColumn from "@/components/compositions/list/ListTableColumn";
 

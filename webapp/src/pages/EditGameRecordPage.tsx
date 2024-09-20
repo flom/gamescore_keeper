@@ -2,10 +2,10 @@ import type { ReactElement } from "react";
 import Navbar from "@/components/compositions/Navbar";
 import Container from "@/components/compositions/Container";
 import { useNavigate, useParams } from "react-router-dom";
-import type { GameRecord } from "@/models/GameRecord";
-import type { Game } from "@/models/Game";
+import type { GameRecord } from "@/types/GameRecord";
+import type { Game } from "@/types/Game";
 import EditGameRecordInput from "@/components/game/EditGameRecordInput";
-import type { Group } from "@/models/Group";
+import type { Group } from "@/types/Group";
 import { useGroup } from "@/features/group/api/getGroup";
 
 function EditGameRecordPage(): ReactElement {

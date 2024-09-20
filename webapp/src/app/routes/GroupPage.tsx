@@ -1,6 +1,6 @@
 import type { ReactElement } from "react";
 import Navbar from "@/components/compositions/Navbar";
-import { getGroupLabel } from "@/models/Group";
+import { getGroupLabel } from "@/types/Group";
 import GroupOverview from "@/features/group/components/GroupOverview";
 import { useGroup } from "@/features/group/api/getGroup";
 

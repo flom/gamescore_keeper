@@ -1,8 +1,8 @@
 import type { QueryClient, UseMutationOptions } from "@tanstack/react-query";
-import type { Group } from "@/models/Group";
+import type { Group } from "@/types/Group";
 import store from "@/api/store";
 import { getGroupKey } from "@/api/queryKeys";
-import { GameSchema } from "@/models/Game";
+import { GameSchema } from "@/types/Game";
 import { v4 } from "uuid";
 
 export type CreateGameArgs = {

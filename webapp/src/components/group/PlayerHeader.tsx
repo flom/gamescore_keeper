@@ -2,8 +2,8 @@ import type { ReactElement } from "react";
 import { ListItem } from "@/components/compositions/list";
 import ListTable from "@/components/compositions/list/ListTable";
 import ListTableColumn from "@/components/compositions/list/ListTableColumn";
-import type { Group } from "@/models/Group";
-import type { Player } from "@/models/Player";
+import type { Group } from "@/types/Group";
+import type { Player } from "@/types/Player";
 
 export type PlayerHeaderProps = {
   group: Group;

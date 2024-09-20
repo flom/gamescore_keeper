@@ -1,8 +1,8 @@
 import { z } from "zod";
-import { MetaSchema } from "@/models/Meta";
-import { PlayerSchema } from "@/models/Player";
-import { GameSchema } from "@/models/Game";
-import { GameRecordSchema } from "@/models/GameRecord";
+import { MetaSchema } from "@/types/Meta";
+import { PlayerSchema } from "@/types/Player";
+import { GameSchema } from "@/types/Game";
+import { GameRecordSchema } from "@/types/GameRecord";
 
 export const GroupSchema = MetaSchema.extend({
   name: z.string().default(""),

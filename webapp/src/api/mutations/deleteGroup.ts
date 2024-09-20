@@ -1,6 +1,6 @@
 import type { QueryClient, UseMutationOptions } from "@tanstack/react-query";
 import store from "@/api/store";
-import type { Group } from "@/models/Group";
+import type { Group } from "@/types/Group";
 import { getGroupsKey } from "@/api/queryKeys";
 
 export type DeleteGroupArgs = {

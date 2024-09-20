@@ -1,10 +1,10 @@
 import type { ReactElement } from "react";
 import ListItem from "../compositions/list/ListItem";
 import { Link } from "react-router-dom";
-import type { GameScore } from "@/models/GameScore";
-import type { Game } from "@/models/Game";
-import type { Group } from "@/models/Group";
-import type { GameRecord } from "@/models/GameRecord";
+import type { GameScore } from "@/types/GameScore";
+import type { Game } from "@/types/Game";
+import type { Group } from "@/types/Group";
+import type { GameRecord } from "@/types/GameRecord";
 import PlayerScoreListTable, {
   type PlayerScore,
 } from "@/components/player/PlayerScoreListTable";

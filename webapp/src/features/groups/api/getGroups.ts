@@ -3,7 +3,7 @@ import {
   type UseQueryOptions,
   type UseQueryResult,
 } from "@tanstack/react-query";
-import { type Group, GroupSchema } from "@/models/Group";
+import { type Group, GroupSchema } from "@/types/Group";
 import usePocketBase from "@/hooks/usePocketBase";
 import type PocketBase from "pocketbase";
 import type { ListResult } from "pocketbase";

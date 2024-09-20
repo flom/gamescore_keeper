@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { MetaSchema } from "@/models/Meta";
+import { MetaSchema } from "@/types/Meta";
 
 const NAME_MIN_LENGTH = 2;
 const INITIALS_MAX_LENGTH = 3;

@@ -1,8 +1,8 @@
 import type { ReactElement } from "react";
 import ListItem from "../compositions/list/ListItem";
-import type { Group } from "@/models/Group";
-import type { GameScore } from "@/models/GameScore";
-import type { GameRecord } from "@/models/GameRecord";
+import type { Group } from "@/types/Group";
+import type { GameScore } from "@/types/GameScore";
+import type { GameRecord } from "@/types/GameRecord";
 import PlayerScoreListTable, {
   type PlayerScore,
 } from "@/components/player/PlayerScoreListTable";

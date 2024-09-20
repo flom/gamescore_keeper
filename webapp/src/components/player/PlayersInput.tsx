@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { PlayerSchema } from "@/models/Player";
+import { PlayerSchema } from "@/types/Player";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -12,7 +12,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { type Group, GroupSchema } from "@/models/Group";
+import { type Group, GroupSchema } from "@/types/Group";
 
 type PlayersInputProps = {
   onSubmit: (group: Group) => Promise<void> | void;

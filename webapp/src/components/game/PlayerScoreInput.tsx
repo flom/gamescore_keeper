@@ -7,9 +7,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import type { Group } from "@/models/Group";
+import type { Group } from "@/types/Group";
 import { useFieldArray, type UseFormReturn } from "react-hook-form";
-import type { GameRecord } from "@/models/GameRecord";
+import type { GameRecord } from "@/types/GameRecord";
 
 type PlayerScoreInputProps = {
   group: Group;

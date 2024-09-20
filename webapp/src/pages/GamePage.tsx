@@ -1,8 +1,8 @@
 import type { ReactElement } from "react";
 import Navbar from "@/components/compositions/Navbar";
 import { useParams } from "react-router-dom";
-import type { GameRecord } from "@/models/GameRecord";
-import type { Game } from "@/models/Game";
+import type { GameRecord } from "@/types/GameRecord";
+import type { Game } from "@/types/Game";
 import GameOverview from "@/components/game/GameOverview";
 import { useGroup } from "@/features/group/api/getGroup";
 

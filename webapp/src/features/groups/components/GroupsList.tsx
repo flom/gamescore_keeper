@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import { getGroupLabel, type Group } from "@/models/Group";
+import { getGroupLabel, type Group } from "@/types/Group";
 import { List, ListItem } from "@/components/compositions/list";
 import { Link } from "react-router-dom";
 import { useGroups } from "@/features/groups/api/getGroups";

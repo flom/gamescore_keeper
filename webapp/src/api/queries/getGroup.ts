@@ -1,5 +1,5 @@
 import type { UseQueryOptions } from "@tanstack/react-query";
-import { type Group, GroupSchema } from "@/models/Group";
+import { type Group, GroupSchema } from "@/types/Group";
 import store from "@/api/store";
 import { getGroupKey } from "@/api/queryKeys";
 

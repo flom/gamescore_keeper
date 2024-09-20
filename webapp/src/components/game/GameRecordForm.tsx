@@ -11,9 +11,9 @@ import { Input } from "@/components/ui/input";
 import PlayerScoreInput from "@/components/game/PlayerScoreInput";
 import { Textarea } from "@/components/ui/textarea";
 import { useForm } from "react-hook-form";
-import { type GameRecord, GameRecordSchema } from "@/models/GameRecord";
+import { type GameRecord, GameRecordSchema } from "@/types/GameRecord";
 import { zodResolver } from "@hookform/resolvers/zod";
-import type { Group } from "@/models/Group";
+import type { Group } from "@/types/Group";
 
 type GameRecordFormProps = {
   group: Group;

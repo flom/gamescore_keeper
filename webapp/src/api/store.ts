@@ -1,8 +1,8 @@
-import { type Group, GroupSchema } from "@/models/Group";
-import { PlayerSchema } from "@/models/Player";
-import { GameSchema } from "@/models/Game";
-import { GameRecordSchema } from "@/models/GameRecord";
-import { GameScoreSchema } from "@/models/GameScore";
+import { type Group, GroupSchema } from "@/types/Group";
+import { PlayerSchema } from "@/types/Player";
+import { GameSchema } from "@/types/Game";
+import { GameRecordSchema } from "@/types/GameRecord";
+import { GameScoreSchema } from "@/types/GameScore";
 
 const playerId1 = "1EBEC6E6-554A-4D8F-9EF7-E0D08BA6B8B3";
 const playerId2 = "7D4210A2-10AA-40AC-81C9-39E1B348D931";

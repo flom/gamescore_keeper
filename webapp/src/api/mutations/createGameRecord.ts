@@ -1,6 +1,6 @@
 import type { QueryClient, UseMutationOptions } from "@tanstack/react-query";
-import type { GameRecord } from "@/models/GameRecord";
-import type { Group } from "@/models/Group";
+import type { GameRecord } from "@/types/GameRecord";
+import type { Group } from "@/types/Group";
 import store from "@/api/store";
 import { getGroupKey } from "@/api/queryKeys";
 

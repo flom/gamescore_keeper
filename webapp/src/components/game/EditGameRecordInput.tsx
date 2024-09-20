@@ -1,8 +1,8 @@
 import type { ReactElement } from "react";
 import GameRecordForm from "@/components/game/GameRecordForm";
 import { Button } from "@/components/ui/button";
-import type { GameRecord } from "@/models/GameRecord";
-import type { Group } from "@/models/Group";
+import type { GameRecord } from "@/types/GameRecord";
+import type { Group } from "@/types/Group";
 import groupHooks from "@/api/group.hooks";
 import {
   Dialog,

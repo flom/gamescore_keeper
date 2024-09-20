@@ -10,7 +10,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { getGroupLabel, type Group } from "@/models/Group";
+import { getGroupLabel, type Group } from "@/types/Group";
 import groupsHooks from "@/api/groups.hooks";
 
 type EditGroupProps = {

@@ -4,7 +4,7 @@ import Container from "../components/compositions/Container";
 import PlayersInput from "@/components/player/PlayersInput";
 import { useNavigate } from "react-router-dom";
 import groupsHooks from "@/api/groups.hooks";
-import type { Group } from "@/models/Group";
+import type { Group } from "@/types/Group";
 
 function AddGroup(): ReactElement {
   const navigate = useNavigate();

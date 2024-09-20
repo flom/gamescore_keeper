@@ -1,4 +1,4 @@
-import { MetaSchema } from "@/models/Meta";
+import { MetaSchema } from "@/types/Meta";
 import { z } from "zod";
 
 export const GameScoreSchema = MetaSchema.extend({

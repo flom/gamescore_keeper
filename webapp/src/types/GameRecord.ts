@@ -1,6 +1,6 @@
-import { MetaSchema } from "@/models/Meta";
+import { MetaSchema } from "@/types/Meta";
 import { z } from "zod";
-import { GameScoreSchema } from "@/models/GameScore";
+import { GameScoreSchema } from "@/types/GameScore";
 
 export const GameRecordSchema = MetaSchema.extend({
   dateTime: z.string().default(() => new Date().toISOString().slice(0, 10)),

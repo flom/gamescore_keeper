@@ -1,9 +1,9 @@
 import type { ReactElement } from "react";
-import { type GameRecord, GameRecordSchema } from "@/models/GameRecord";
+import { type GameRecord, GameRecordSchema } from "@/types/GameRecord";
 import { Button } from "@/components/ui/button";
-import type { Group } from "@/models/Group";
-import type { Player } from "@/models/Player";
-import { GameScoreSchema } from "@/models/GameScore";
+import type { Group } from "@/types/Group";
+import type { Player } from "@/types/Player";
+import { GameScoreSchema } from "@/types/GameScore";
 import GameRecordForm from "@/components/game/GameRecordForm";
 import { NIL } from "uuid";
 import groupHooks from "@/api/group.hooks";

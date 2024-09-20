@@ -7,7 +7,7 @@ import {
 import { FormControl, FormItem, FormLabel } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import type { Game } from "@/models/Game";
+import type { Game } from "@/types/Game";
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 import {
   Command,
@@ -16,13 +16,13 @@ import {
   CommandInput,
   CommandItem,
 } from "@/components/ui/command";
-import type { Group } from "@/models/Group";
+import type { Group } from "@/types/Group";
 import type {
   ControllerRenderProps,
   FieldValues,
   UseFormReturn,
 } from "react-hook-form";
-import type { GameRecord } from "@/models/GameRecord";
+import type { GameRecord } from "@/types/GameRecord";
 import { NIL } from "uuid";
 
 type GameSelectionProps = {
@@ -60,8 +60,8 @@ function GameSelection({
               disabled={isDisabled}
             >
               {field.value
-                ? group.games.find((game: Game) => game.id === field.value)
-                    ?.name ?? newGame
+                ? (group.games.find((game: Game) => game.id === field.value)
+                    ?.name ?? newGame)
                 : "Spiel auswählen"}
               <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
             </Button>
