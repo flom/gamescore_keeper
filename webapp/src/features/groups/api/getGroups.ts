@@ -1,8 +1,13 @@
-import type { UseQueryOptions } from "@tanstack/react-query";
+import {
+  useQuery,
+  type UseQueryOptions,
+  type UseQueryResult,
+} from "@tanstack/react-query";
 import { type Group, GroupSchema } from "@/models/Group";
-import { getGroupsKey } from "@/api/queryKeys";
+import usePocketBase from "@/hooks/usePocketBase";
 import type PocketBase from "pocketbase";
 import type { ListResult } from "pocketbase";
+import { getGroupsKey } from "@/api/queryKeys";
 import type PbGroup from "@/types/api/PbGroup";
 
 export function getGroups(pocketBase: PocketBase): UseQueryOptions<Group[]> {
@@ -23,4 +28,10 @@ export function getGroups(pocketBase: PocketBase): UseQueryOptions<Group[]> {
       );
     },
   };
+}
+
+export function useGroups(): UseQueryResult<Group[]> {
+  const pocketBase = usePocketBase();
+
+  return useQuery(getGroups(pocketBase));
 }

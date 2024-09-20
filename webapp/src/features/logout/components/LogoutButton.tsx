@@ -1,11 +1,11 @@
 import type { ReactElement } from "react";
 import { Button } from "@/components/ui/button";
-import usersHook from "@/api/users.hook";
 import { useNavigate } from "react-router-dom";
+import { useLogoutUser } from "@/features/logout/api/logoutUser";
 
 function LogoutButton(): ReactElement {
   const navigate = useNavigate();
-  const logout = usersHook.useLogout();
+  const logout = useLogoutUser();
 
   const onLogout = (): void => {
     logout();

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import usersHook from "@/api/users.hook";
+import { useLoginUser } from "@/features/login/api/loginUser";
 
 type UseLoginResult = {
   loginUser: (userName: string, password: string) => unknown;
@@ -9,7 +9,7 @@ type UseLoginResult = {
 
 export default function useLogin(): UseLoginResult {
   const navigate = useNavigate();
-  const loginUser = usersHook.useLogin();
+  const loginUser = useLoginUser();
   const [invalidCredentials, setInvalidCredentials] = useState<boolean>(false);
 
   return {
