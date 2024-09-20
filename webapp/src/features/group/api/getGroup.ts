@@ -3,7 +3,7 @@ import {
   type UseQueryOptions,
   type UseQueryResult,
 } from "@tanstack/react-query";
-import { type Group, GroupSchema } from "@/types/Group";
+import { type Group, parsePbGroup } from "@/types/Group";
 import { useParams } from "react-router-dom";
 import { getGroupKey } from "@/api/queryKeys";
 import type PocketBase from "pocketbase";
@@ -20,13 +20,11 @@ export function getGroup(
       const pbGroup: PbGroup = await pocketBase
         .collection("groups")
         .getOne<PbGroup>(groupId ?? "", {
-          expand: "players_via_groupId",
+          expand:
+            "players_via_groupId,games_via_groupId,gameRecords_via_groupId",
         });
 
-      return GroupSchema.parse({
-        ...pbGroup,
-        players: pbGroup.expand?.players_via_groupId,
-      });
+      return parsePbGroup(pbGroup);
     },
     enabled: !!groupId,
   };
