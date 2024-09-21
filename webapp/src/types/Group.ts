@@ -4,6 +4,7 @@ import { PlayerSchema } from "@/types/Player";
 import { GameSchema } from "@/types/Game";
 import { GameRecordSchema } from "@/types/GameRecord";
 import type PbGroup from "@/types/api/PbGroup";
+import type PbGameRecord from "@/types/api/PbGameRecord";
 
 export const GroupSchema = MetaSchema.extend({
   name: z.string().default(""),
@@ -31,8 +32,12 @@ export function getGroupLabel(group: Group): string {
 export function parsePbGroup(pbGroup: PbGroup): Group {
   return GroupSchema.parse({
     ...pbGroup,
-    players: pbGroup.expand?.players_via_groupId,
-    games: pbGroup.expand?.games_via_groupId,
-    records: pbGroup.expand?.gameRecords_via_groupId,
+    players: pbGroup.expand?.players,
+    games: pbGroup.expand?.games,
+    records: pbGroup.expand?.gameRecords?.map((pbRecord: PbGameRecord) => ({
+      ...pbRecord,
+      scores: pbRecord.expand?.scores,
+      gameId: pbRecord.game,
+    })),
   });
 }

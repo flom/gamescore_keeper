@@ -17,7 +17,7 @@ export function getGroups(pocketBase: PocketBase): UseQueryOptions<Group[]> {
       const pbGroups: ListResult<PbGroup> = await pocketBase
         .collection("groups")
         .getList<PbGroup>(1, 50, {
-          expand: "players_via_groupId",
+          expand: "players",
         });
 
       return GroupSchema.array().parse(
