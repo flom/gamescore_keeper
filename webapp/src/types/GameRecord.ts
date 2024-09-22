@@ -1,6 +1,10 @@
 import { MetaSchema } from "@/types/Meta";
 import { z } from "zod";
-import { GameScoreSchema } from "@/types/GameScore";
+import {
+  type GameScore,
+  GameScoreSchema,
+  gameScoreToPbGameScore,
+} from "@/types/GameScore";
 import type { PbGameRecordFields } from "@/types/api/PbGameRecord";
 
 export const GameRecordSchema = MetaSchema.extend({
@@ -21,5 +25,10 @@ export function gameRecordToPbGameRecord(
     dateTime: gameRecord.dateTime,
     notes: gameRecord.notes,
     game: gameRecord.gameId,
+    expand: {
+      gameScores_via_gameRecord: gameRecord.scores.map((score: GameScore) =>
+        gameScoreToPbGameScore("", score),
+      ),
+    },
   };
 }

@@ -1,8 +1,11 @@
 import type { RecordModel } from "pocketbase";
 
-type PbGameScore = {
+export type PbGameScoreFields = {
   score: number;
-  playerId: string;
-} & RecordModel;
+  player: string;
+  gameRecord: string;
+};
+
+type PbGameScore = PbGameScoreFields & RecordModel;
 
 export default PbGameScore;
