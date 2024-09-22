@@ -8,7 +8,7 @@ import LoadingOrError from "@/components/LoadingOrError";
 import GroupPage from "@/app/routes/GroupPage";
 import AddGameRecordPage from "@/pages/AddGameRecordPage";
 import EditGameRecordPage from "@/pages/EditGameRecordPage";
-import GamePage from "@/pages/GamePage";
+import GamePage from "@/app/routes/GamePage";
 import EditGroupPage from "@/pages/EditGroupPage";
 import LoginPage from "@/app/routes/LoginPage";
 import Root from "@/pages/Root";
