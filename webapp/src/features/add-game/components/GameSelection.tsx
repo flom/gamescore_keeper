@@ -77,21 +77,6 @@ function GameSelection({
               onValueChange={setSearchValue}
             />
             <CommandList>
-              <CommandEmpty>
-                Neues Spiel{" "}
-                <Button
-                  variant="outline"
-                  onClick={(): void => {
-                    form.setValue("gameId", NIL);
-                    setNewGame(searchValue);
-                    onNewGame(searchValue);
-                    setPopoverVisible(false);
-                    setSearchValue("");
-                  }}
-                >
-                  {searchValue}
-                </Button>
-              </CommandEmpty>
               <CommandGroup>
                 {group.games.map((game: Game) => (
                   <CommandItem
@@ -114,7 +99,7 @@ function GameSelection({
                 ))}
               </CommandGroup>
               <CommandSeparator />
-              <CommandGroup>
+              <CommandGroup forceMount>
                 <CommandItem
                   value={searchValue}
                   onSelect={(): void => {
