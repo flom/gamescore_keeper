@@ -6,7 +6,7 @@ import GroupsPage from "./app/routes/GroupsPage";
 import AddGroup from "./pages/AddGroup";
 import LoadingOrError from "@/components/LoadingOrError";
 import GroupPage from "@/app/routes/GroupPage";
-import AddGameRecordPage from "@/pages/AddGameRecordPage";
+import AddGameRecordPage from "@/app/routes/AddGameRecordPage";
 import EditGameRecordPage from "@/pages/EditGameRecordPage";
 import GamePage from "@/app/routes/GamePage";
 import EditGroupPage from "@/pages/EditGroupPage";

@@ -1,15 +1,21 @@
-import type { QueryClient, UseMutationOptions } from "@tanstack/react-query";
+import {
+  type QueryClient,
+  useMutation,
+  type UseMutationOptions,
+  type UseMutationResult,
+  useQueryClient,
+} from "@tanstack/react-query";
 import type { GameRecord } from "@/types/GameRecord";
 import type { Group } from "@/types/Group";
 import store from "@/api/store";
 import { getGroupKey } from "@/api/queryKeys";
 
-export type CreateGameRecordArgs = {
+type CreateGameRecordArgs = {
   groupId: string;
   gameRecord: GameRecord;
 };
 
-export function createGameRecord(
+function createGameRecord(
   queryClient: QueryClient,
 ): UseMutationOptions<unknown, unknown, CreateGameRecordArgs> {
   return {
@@ -26,4 +32,14 @@ export function createGameRecord(
       }
     },
   };
+}
+
+export function useCreateGameRecord(): UseMutationResult<
+  unknown,
+  unknown,
+  CreateGameRecordArgs
+> {
+  const queryClient = useQueryClient();
+
+  return useMutation(createGameRecord(queryClient));
 }

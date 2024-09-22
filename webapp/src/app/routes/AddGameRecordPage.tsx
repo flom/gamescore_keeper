@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import Navbar from "@/components/compositions/Navbar";
 import Container from "@/components/compositions/Container";
-import AddGameRecordInput from "@/features/game/components/AddGameRecordInput";
+import AddGameRecordInput from "@/features/add-game/components/AddGameRecordInput";
 import { useNavigate } from "react-router-dom";
 import useGroup from "@/hooks/useGroup";
 

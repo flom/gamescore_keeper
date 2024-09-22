@@ -7,6 +7,7 @@ import { GameScoreSchema } from "@/types/GameScore";
 import GameRecordForm from "@/features/game/components/GameRecordForm";
 import { NIL } from "uuid";
 import groupHooks from "@/api/group.hooks";
+import { useCreateGameRecord } from "@/features/add-game/api/createGameRecord";
 
 type AddGameRecordInputProps = {
   group: Group;
@@ -17,7 +18,7 @@ function AddGameRecordInput({
   group,
   onFinished,
 }: AddGameRecordInputProps): ReactElement {
-  const { mutateAsync: createGameRecord } = groupHooks.useCreateGameRecord();
+  const { mutateAsync: createGameRecord } = useCreateGameRecord();
   const { mutateAsync: createGame } = groupHooks.useCreateGame();
 
   const defaultValue = GameRecordSchema.partial({ gameId: true }).parse({

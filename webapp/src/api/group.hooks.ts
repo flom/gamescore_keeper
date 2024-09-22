@@ -3,10 +3,6 @@ import {
   type UseMutationResult,
   useQueryClient,
 } from "@tanstack/react-query";
-import {
-  createGameRecord,
-  type CreateGameRecordArgs,
-} from "@/api/mutations/createGameRecord";
 import { createGame, type CreateGameArgs } from "@/api/mutations/createGame";
 import {
   updateGameRecord,
@@ -21,16 +17,6 @@ function useCreateGame(): UseMutationResult<string, unknown, CreateGameArgs> {
   const queryClient = useQueryClient();
 
   return useMutation(createGame(queryClient));
-}
-
-function useCreateGameRecord(): UseMutationResult<
-  unknown,
-  unknown,
-  CreateGameRecordArgs
-> {
-  const queryClient = useQueryClient();
-
-  return useMutation(createGameRecord(queryClient));
 }
 
 function useUpdateGameRecord(): UseMutationResult<
@@ -55,7 +41,6 @@ function useDeleteGameRecord(): UseMutationResult<
 
 const groupHooks = {
   useCreateGame,
-  useCreateGameRecord,
   useUpdateGameRecord,
   useDeleteGameRecord,
 };
