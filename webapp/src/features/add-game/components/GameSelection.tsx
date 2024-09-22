@@ -15,6 +15,8 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
+  CommandList,
+  CommandSeparator,
 } from "@/components/ui/command";
 import type { Group } from "@/types/Group";
 import type {
@@ -74,54 +76,59 @@ function GameSelection({
               className="h-9"
               onValueChange={setSearchValue}
             />
-            <CommandEmpty>
-              Neues Spiel{" "}
-              <Button
-                variant="outline"
-                onClick={(): void => {
-                  form.setValue("gameId", NIL);
-                  setNewGame(searchValue);
-                  onNewGame(searchValue);
-                  setPopoverVisible(false);
-                  setSearchValue("");
-                }}
-              >
-                {searchValue}
-              </Button>
-            </CommandEmpty>
-            <CommandGroup>
-              {group.games.map((game: Game) => (
-                <CommandItem
-                  value={game.name}
-                  key={game.id}
-                  onSelect={(): void => {
-                    form.setValue("gameId", game.id);
+            <CommandList>
+              <CommandEmpty>
+                Neues Spiel{" "}
+                <Button
+                  variant="outline"
+                  onClick={(): void => {
+                    form.setValue("gameId", NIL);
+                    setNewGame(searchValue);
+                    onNewGame(searchValue);
                     setPopoverVisible(false);
                     setSearchValue("");
                   }}
                 >
-                  {game.name}
-                  <CheckIcon
-                    className={cn(
-                      "ml-auto h-4 w-4",
-                      game.id === field.value ? "opacity-100" : "opacity-0",
-                    )}
-                  />
+                  {searchValue}
+                </Button>
+              </CommandEmpty>
+              <CommandGroup>
+                {group.games.map((game: Game) => (
+                  <CommandItem
+                    value={game.name}
+                    key={game.id}
+                    onSelect={(): void => {
+                      form.setValue("gameId", game.id);
+                      setPopoverVisible(false);
+                      setSearchValue("");
+                    }}
+                  >
+                    {game.name}
+                    <CheckIcon
+                      className={cn(
+                        "ml-auto h-4 w-4",
+                        game.id === field.value ? "opacity-100" : "opacity-0",
+                      )}
+                    />
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+              <CommandSeparator />
+              <CommandGroup>
+                <CommandItem
+                  value={searchValue}
+                  onSelect={(): void => {
+                    form.setValue("gameId", NIL);
+                    setNewGame(searchValue);
+                    onNewGame(searchValue);
+                    setPopoverVisible(false);
+                    setSearchValue("");
+                  }}
+                >
+                  Neues Spiel: {searchValue}
                 </CommandItem>
-              ))}
-              <CommandItem
-                value={searchValue}
-                onSelect={(): void => {
-                  form.setValue("gameId", NIL);
-                  setNewGame(searchValue);
-                  onNewGame(searchValue);
-                  setPopoverVisible(false);
-                  setSearchValue("");
-                }}
-              >
-                Neues Spiel: {searchValue}
-              </CommandItem>
-            </CommandGroup>
+              </CommandGroup>
+            </CommandList>
           </Command>
         </PopoverContent>
       </Popover>

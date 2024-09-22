@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import type { Group } from "@/types/Group";
 import type { Player } from "@/types/Player";
 import { GameScoreSchema } from "@/types/GameScore";
-import GameRecordForm from "@/features/game/components/GameRecordForm";
+import GameRecordForm from "@/features/add-game/components/GameRecordForm";
 import { NIL } from "uuid";
 import groupHooks from "@/api/group.hooks";
 import { useCreateGameRecord } from "@/features/add-game/api/createGameRecord";

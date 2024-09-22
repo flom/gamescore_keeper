@@ -6,7 +6,7 @@ import {
   FormItem,
   FormLabel,
 } from "@/components/ui/form";
-import GameSelection from "@/features/game/components/GameSelection";
+import GameSelection from "@/features/add-game/components/GameSelection";
 import { Input } from "@/components/ui/input";
 import PlayerScoreInput from "@/features/game/components/PlayerScoreInput";
 import { Textarea } from "@/components/ui/textarea";

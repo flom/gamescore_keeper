@@ -5,10 +5,10 @@ import {
   type UseMutationResult,
   useQueryClient,
 } from "@tanstack/react-query";
-import type { GameRecord } from "@/types/GameRecord";
-import type { Group } from "@/types/Group";
-import store from "@/api/store";
+import { type GameRecord, gameRecordToPbGameRecord } from "@/types/GameRecord";
 import { getGroupKey } from "@/api/queryKeys";
+import usePocketBase from "@/hooks/usePocketBase";
+import type PocketBase from "pocketbase";
 
 type CreateGameRecordArgs = {
   groupId: string;
@@ -17,19 +17,17 @@ type CreateGameRecordArgs = {
 
 function createGameRecord(
   queryClient: QueryClient,
+  pocketBase: PocketBase,
 ): UseMutationOptions<unknown, unknown, CreateGameRecordArgs> {
   return {
     mutationFn: async (args: CreateGameRecordArgs): Promise<void> => {
-      const group: Group | undefined = store.groups.find(
-        (g: Group) => g.id === args.groupId,
-      );
+      const record = await pocketBase
+        .collection("gameRecords")
+        .create(gameRecordToPbGameRecord(args.gameRecord));
 
-      if (group) {
-        group.records = [args.gameRecord, ...group.records];
-        await queryClient.invalidateQueries({
-          queryKey: getGroupKey(args.groupId),
-        });
-      }
+      await queryClient.invalidateQueries({
+        queryKey: getGroupKey(args.groupId),
+      });
     },
   };
 }
@@ -40,6 +38,7 @@ export function useCreateGameRecord(): UseMutationResult<
   CreateGameRecordArgs
 > {
   const queryClient = useQueryClient();
+  const pocketBase = usePocketBase();
 
-  return useMutation(createGameRecord(queryClient));
+  return useMutation(createGameRecord(queryClient, pocketBase));
 }

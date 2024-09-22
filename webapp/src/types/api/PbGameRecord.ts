@@ -1,7 +1,7 @@
 import type { RecordModel } from "pocketbase";
 import type PbGameScore from "@/types/api/PbGameScore";
 
-type PbGameRecord = {
+export type PbGameRecordFields = {
   dateTime: string;
   notes: string;
   game: string;
@@ -9,6 +9,8 @@ type PbGameRecord = {
   expand?: {
     scores?: PbGameScore[];
   };
-} & RecordModel;
+};
+
+type PbGameRecord = PbGameRecordFields & RecordModel;
 
 export default PbGameRecord;
