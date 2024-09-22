@@ -13,12 +13,13 @@ export const GameRecordSchema = MetaSchema.extend({
 export type GameRecord = z.infer<typeof GameRecordSchema>;
 
 export function gameRecordToPbGameRecord(
+  groupId: string,
   gameRecord: GameRecord,
 ): PbGameRecordFields {
   return {
+    group: groupId,
     dateTime: gameRecord.dateTime,
     notes: gameRecord.notes,
     game: gameRecord.gameId,
-    scores: [],
   };
 }

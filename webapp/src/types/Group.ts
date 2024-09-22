@@ -33,13 +33,15 @@ export function getGroupLabel(group: Group): string {
 export function parsePbGroup(pbGroup: PbGroup): Group {
   return GroupSchema.parse({
     ...pbGroup,
-    players: pbGroup.expand?.players,
-    games: pbGroup.expand?.games,
-    records: pbGroup.expand?.gameRecords?.map((pbRecord: PbGameRecord) => ({
-      ...pbRecord,
-      scores: pbRecord.expand?.scores,
-      gameId: pbRecord.game,
-      dateTime: pbDateTimeStrToDate(pbRecord.dateTime),
-    })),
+    players: pbGroup.expand?.players_via_group,
+    games: pbGroup.expand?.games_via_group,
+    records: pbGroup.expand?.gameRecords_via_group?.map(
+      (pbRecord: PbGameRecord) => ({
+        ...pbRecord,
+        scores: pbRecord.expand?.gameScores_via_gameRecord,
+        gameId: pbRecord.game,
+        dateTime: pbDateTimeStrToDate(pbRecord.dateTime),
+      }),
+    ),
   });
 }

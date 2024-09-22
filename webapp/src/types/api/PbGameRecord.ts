@@ -5,9 +5,9 @@ export type PbGameRecordFields = {
   dateTime: string;
   notes: string;
   game: string;
-  scores: string[];
+  group: string;
   expand?: {
-    scores?: PbGameScore[];
+    gameScores_via_gameRecord?: PbGameScore[];
   };
 };
 

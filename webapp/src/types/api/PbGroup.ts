@@ -6,9 +6,9 @@ import type PbGameRecord from "@/types/api/PbGameRecord";
 type PbGroup = {
   name: string;
   expand?: {
-    players?: PbPlayer[];
-    games?: PbGame[];
-    gameRecords?: PbGameRecord[];
+    players_via_group?: PbPlayer[];
+    games_via_group?: PbGame[];
+    gameRecords_via_group?: PbGameRecord[];
   };
 } & RecordModel;
 

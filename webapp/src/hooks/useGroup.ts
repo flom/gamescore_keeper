@@ -20,7 +20,8 @@ function getGroup(
       const pbGroup: PbGroup = await pocketBase
         .collection("groups")
         .getOne<PbGroup>(groupId ?? "", {
-          expand: "players,games,gameRecords.scores",
+          expand:
+            "players_via_group,games_via_group,gameRecords_via_group.gameScores_via_gameRecord",
         });
 
       return parsePbGroup(pbGroup);

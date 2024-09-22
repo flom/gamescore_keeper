@@ -23,7 +23,7 @@ function createGameRecord(
     mutationFn: async (args: CreateGameRecordArgs): Promise<void> => {
       const record = await pocketBase
         .collection("gameRecords")
-        .create(gameRecordToPbGameRecord(args.gameRecord));
+        .create(gameRecordToPbGameRecord(args.groupId, args.gameRecord));
 
       await queryClient.invalidateQueries({
         queryKey: getGroupKey(args.groupId),
