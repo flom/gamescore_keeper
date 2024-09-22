@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import GameRecordForm from "@/features/add-game/components/GameRecordForm";
+import GameRecordForm from "@/features/edit-game/components/GameRecordForm";
 import { Button } from "@/components/ui/button";
 import type { GameRecord } from "@/types/GameRecord";
 import type { Group } from "@/types/Group";

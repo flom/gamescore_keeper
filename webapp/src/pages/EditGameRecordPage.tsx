@@ -4,7 +4,7 @@ import Container from "@/components/compositions/Container";
 import { useNavigate, useParams } from "react-router-dom";
 import type { GameRecord } from "@/types/GameRecord";
 import type { Game } from "@/types/Game";
-import EditGameRecordInput from "@/features/game/components/EditGameRecordInput";
+import EditGameRecordInput from "@/features/edit-game/components/EditGameRecordInput";
 import type { Group } from "@/types/Group";
 import useGroup from "@/hooks/useGroup";
 
