@@ -6,9 +6,9 @@ import {
   FormItem,
   FormLabel,
 } from "@/components/ui/form";
-import GameSelection from "@/components/game/GameSelection";
+import GameSelection from "@/features/game/components/GameSelection";
 import { Input } from "@/components/ui/input";
-import PlayerScoreInput from "@/components/game/PlayerScoreInput";
+import PlayerScoreInput from "@/features/game/components/PlayerScoreInput";
 import { Textarea } from "@/components/ui/textarea";
 import { useForm } from "react-hook-form";
 import { type GameRecord, GameRecordSchema } from "@/types/GameRecord";
