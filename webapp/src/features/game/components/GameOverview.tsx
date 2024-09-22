@@ -9,10 +9,14 @@ import type { Group } from "@/types/Group";
 
 type GameOverviewProps = {
   group: Group;
-  gameRecords: GameRecord[];
+  gameId: string;
 };
 
-function GameOverview({ group, gameRecords }: GameOverviewProps): ReactElement {
+function GameOverview({ group, gameId }: GameOverviewProps): ReactElement {
+  const gameRecords: GameRecord[] = group.records.filter(
+    (gameRecord: GameRecord) => gameRecord.gameId === gameId,
+  );
+
   return (
     <List>
       <PlayerHeader group={group} />
