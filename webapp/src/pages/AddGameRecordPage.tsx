@@ -3,7 +3,7 @@ import Navbar from "@/components/compositions/Navbar";
 import Container from "@/components/compositions/Container";
 import AddGameRecordInput from "@/features/game/components/AddGameRecordInput";
 import { useNavigate } from "react-router-dom";
-import { useGroup } from "@/features/group/api/getGroup";
+import useGroup from "@/hooks/useGroup";
 
 function AddGameRecordPage(): ReactElement {
   const navigate = useNavigate();

@@ -6,7 +6,7 @@ import type { GameRecord } from "@/types/GameRecord";
 import type { Game } from "@/types/Game";
 import EditGameRecordInput from "@/features/game/components/EditGameRecordInput";
 import type { Group } from "@/types/Group";
-import { useGroup } from "@/features/group/api/getGroup";
+import useGroup from "@/hooks/useGroup";
 
 function EditGameRecordPage(): ReactElement {
   const navigate = useNavigate();

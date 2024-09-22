@@ -10,7 +10,7 @@ import type { ListResult } from "pocketbase";
 import { getGroupsKey } from "@/api/queryKeys";
 import type PbGroup from "@/types/api/PbGroup";
 
-export function getGroups(pocketBase: PocketBase): UseQueryOptions<Group[]> {
+function getGroups(pocketBase: PocketBase): UseQueryOptions<Group[]> {
   return {
     queryKey: getGroupsKey(),
     queryFn: async (): Promise<Group[]> => {
@@ -27,7 +27,7 @@ export function getGroups(pocketBase: PocketBase): UseQueryOptions<Group[]> {
   };
 }
 
-export function useGroups(): UseQueryResult<Group[]> {
+export default function useGroups(): UseQueryResult<Group[]> {
   const pocketBase = usePocketBase();
 
   return useQuery(getGroups(pocketBase));

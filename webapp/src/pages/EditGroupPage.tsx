@@ -4,7 +4,7 @@ import { getGroupLabel } from "@/types/Group";
 import Container from "@/components/compositions/Container";
 import EditGroup from "@/components/group/EditGroup";
 import { useNavigate } from "react-router-dom";
-import { useGroup } from "@/features/group/api/getGroup";
+import useGroup from "@/hooks/useGroup";
 
 function EditGroupPage(): ReactElement {
   const navigate = useNavigate();

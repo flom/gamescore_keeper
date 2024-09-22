@@ -10,7 +10,7 @@ import type PocketBase from "pocketbase";
 import usePocketBase from "@/hooks/usePocketBase";
 import type PbGroup from "@/types/api/PbGroup";
 
-export function getGroup(
+function getGroup(
   pocketBase: PocketBase,
   groupId: string | undefined,
 ): UseQueryOptions<Group> {
@@ -29,7 +29,7 @@ export function getGroup(
   };
 }
 
-export function useGroup(): UseQueryResult<Group> {
+export default function useGroup(): UseQueryResult<Group> {
   const { groupId } = useParams();
   const pocketBase = usePocketBase();
 

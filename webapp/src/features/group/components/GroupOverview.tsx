@@ -5,15 +5,13 @@ import PlayerHeader from "@/components/group/PlayerHeader";
 import GrandTotal from "@/components/group/GrandTotal";
 import SingleGameScore from "@/components/group/SingleGameScore";
 import type { GameRecord } from "@/types/GameRecord";
-import { useGroup } from "@/features/group/api/getGroup";
+import type { Group } from "@/types/Group";
 
-function GroupOverview(): ReactElement {
-  const { data: group } = useGroup();
+type GroupOverviewProps = {
+  group: Group;
+};
 
-  if (group === undefined) {
-    return <>Group not found</>;
-  }
-
+function GroupOverview({ group }: GroupOverviewProps): ReactElement {
   return (
     <List>
       <PlayerHeader group={group} />

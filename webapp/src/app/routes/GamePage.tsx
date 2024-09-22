@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import type { GameRecord } from "@/types/GameRecord";
 import type { Game } from "@/types/Game";
 import GameOverview from "@/features/game/components/GameOverview";
-import { useGroup } from "@/features/group/api/getGroup";
+import useGroup from "@/hooks/useGroup";
 
 function GamePage(): ReactElement {
   const { gameId } = useParams();

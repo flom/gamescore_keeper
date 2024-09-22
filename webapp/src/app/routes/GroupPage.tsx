@@ -2,7 +2,7 @@ import type { ReactElement } from "react";
 import Navbar from "@/components/compositions/Navbar";
 import { getGroupLabel } from "@/types/Group";
 import GroupOverview from "@/features/group/components/GroupOverview";
-import { useGroup } from "@/features/group/api/getGroup";
+import useGroup from "@/hooks/useGroup";
 
 function GroupPage(): ReactElement {
   const { data: group } = useGroup();
@@ -20,7 +20,7 @@ function GroupPage(): ReactElement {
         addButtonTo="./add-game"
         editButtonTo="./edit"
       />
-      <GroupOverview />
+      <GroupOverview group={group} />
     </>
   );
 }
