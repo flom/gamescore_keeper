@@ -5,6 +5,7 @@ import { GameSchema } from "@/types/Game";
 import { GameRecordSchema } from "@/types/GameRecord";
 import type PbGroup from "@/types/api/PbGroup";
 import type PbGameRecord from "@/types/api/PbGameRecord";
+import { pbDateTimeStrToDate } from "@/utils/dateUtils";
 
 export const GroupSchema = MetaSchema.extend({
   name: z.string().default(""),
@@ -38,6 +39,7 @@ export function parsePbGroup(pbGroup: PbGroup): Group {
       ...pbRecord,
       scores: pbRecord.expand?.scores,
       gameId: pbRecord.game,
+      dateTime: pbDateTimeStrToDate(pbRecord.dateTime),
     })),
   });
 }
