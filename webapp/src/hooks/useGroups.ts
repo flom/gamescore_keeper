@@ -3,7 +3,7 @@ import {
   type UseQueryOptions,
   type UseQueryResult,
 } from "@tanstack/react-query";
-import { type Group, GroupSchema, parsePbGroup } from "@/types/Group";
+import { type Group, GroupSchema, mapPbGroup } from "@/types/Group";
 import usePocketBase from "@/hooks/usePocketBase";
 import type PocketBase from "pocketbase";
 import type { ListResult } from "pocketbase";
@@ -21,7 +21,7 @@ function getGroups(pocketBase: PocketBase): UseQueryOptions<Group[]> {
         });
 
       return GroupSchema.array().parse(
-        pbGroups.items.map((pbGroup) => parsePbGroup(pbGroup)),
+        pbGroups.items.map((pbGroup) => mapPbGroup(pbGroup)),
       );
     },
   };

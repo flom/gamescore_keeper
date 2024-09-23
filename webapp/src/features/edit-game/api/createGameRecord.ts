@@ -9,6 +9,8 @@ import { type GameRecord, gameRecordToPbGameRecord } from "@/types/GameRecord";
 import { getGroupKey } from "@/api/queryKeys";
 import usePocketBase from "@/hooks/usePocketBase";
 import type PocketBase from "pocketbase";
+import type { PbGameRecordFields } from "@/types/api/PbGameRecord";
+import { GameScore, gameScoreToPbGameScore } from "@/types/GameScore";
 
 type CreateGameRecordArgs = {
   groupId: string;
@@ -21,10 +23,28 @@ function createGameRecord(
 ): UseMutationOptions<unknown, unknown, CreateGameRecordArgs> {
   return {
     mutationFn: async (args: CreateGameRecordArgs): Promise<void> => {
-      const record = await pocketBase
-        .collection("gameRecords")
-        .create(gameRecordToPbGameRecord(args.groupId, args.gameRecord));
+      const pbGameRecord: PbGameRecordFields = gameRecordToPbGameRecord(
+        args.groupId,
+        args.gameRecord,
+      );
 
+      // create a new game record
+      const newPbGameRecord = await pocketBase
+        .collection("gameRecords")
+        .create(pbGameRecord);
+
+      // create the game scores with newly created game record id
+      const promises: Promise<unknown>[] = args.gameRecord.scores.map(
+        async (score: GameScore): Promise<unknown> => {
+          const pbGameScore = gameScoreToPbGameScore(newPbGameRecord.id, score);
+          return pocketBase.collection("gameScores").create(pbGameScore, {
+            requestKey: score.playerId,
+          });
+        },
+      );
+      await Promise.all(promises);
+
+      // reload the group
       await queryClient.invalidateQueries({
         queryKey: getGroupKey(args.groupId),
       });

@@ -1,5 +1,5 @@
 import type { RecordModel } from "pocketbase";
-import type { PbGameScoreFields } from "@/types/api/PbGameScore";
+import type PbGameScore from "@/types/api/PbGameScore";
 
 export type PbGameRecordFields = {
   dateTime: string;
@@ -7,7 +7,7 @@ export type PbGameRecordFields = {
   game: string;
   group: string;
   expand?: {
-    gameScores_via_gameRecord?: PbGameScoreFields[];
+    gameScores_via_gameRecord?: PbGameScore[];
   };
 };
 

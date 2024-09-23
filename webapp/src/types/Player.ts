@@ -1,5 +1,6 @@
 import { z } from "zod";
-import { MetaSchema } from "@/types/Meta";
+import { mapPbMeta, MetaSchema } from "@/types/Meta";
+import PbPlayer from "@/types/api/PbPlayer";
 
 const NAME_MIN_LENGTH = 2;
 const INITIALS_MAX_LENGTH = 3;
@@ -30,3 +31,12 @@ export const PlayerSchema = MetaSchema.extend({
 });
 
 export type Player = z.infer<typeof PlayerSchema>;
+
+export function mapPbPlayer(pbPlayer: PbPlayer): Player {
+  return {
+    ...mapPbMeta(pbPlayer),
+    name: pbPlayer.name,
+    initials: pbPlayer.initials,
+    color: pbPlayer.color,
+  };
+}

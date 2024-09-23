@@ -1,11 +1,12 @@
 import { z } from "zod";
-import { getMetaFields, MetaSchema } from "@/types/Meta";
-import { PlayerSchema } from "@/types/Player";
-import { GameSchema } from "@/types/Game";
-import { GameRecordSchema } from "@/types/GameRecord";
+import { mapPbMeta, MetaSchema } from "@/types/Meta";
+import { mapPbPlayer, PlayerSchema } from "@/types/Player";
+import { GameSchema, mapPbGame } from "@/types/Game";
+import { GameRecordSchema, mapPbGameRecord } from "@/types/GameRecord";
 import type PbGroup from "@/types/api/PbGroup";
+import type PbPlayer from "@/types/api/PbPlayer";
+import type PbGame from "@/types/api/PbGame";
 import type PbGameRecord from "@/types/api/PbGameRecord";
-import { pbDateTimeStrToDate } from "@/utils/dateUtils";
 
 export const GroupSchema = MetaSchema.extend({
   name: z.string().default(""),
@@ -30,31 +31,23 @@ export function getGroupLabel(group: Group): string {
   return groupLabel;
 }
 
-export function parsePbGroup(pbGroup: PbGroup): Group {
-  // todo: write mappers for other types
+export function mapPbGroup(pbGroup: PbGroup): Group {
   const group: Group = {
-    ...getMetaFields(pbGroup),
+    ...mapPbMeta(pbGroup),
     name: pbGroup.name,
-    players: [],
-    games: [],
-    records: [],
+    players:
+      pbGroup.expand?.players_via_group?.map((pbPlayer: PbPlayer) =>
+        mapPbPlayer(pbPlayer),
+      ) ?? [],
+    games:
+      pbGroup.expand?.games_via_group?.map((pbGame: PbGame) =>
+        mapPbGame(pbGame),
+      ) ?? [],
+    records:
+      pbGroup.expand?.gameRecords_via_group?.map((pbGameRecord: PbGameRecord) =>
+        mapPbGameRecord(pbGameRecord),
+      ) ?? [],
   };
 
   return GroupSchema.parse(group);
-
-  // return GroupSchema.parse({
-  //   id: pbGroup.id,
-  //   created: pbGroup.created,
-  //   updated: pbGroup.updated,
-  //   players: pbGroup.expand?.players_via_group,
-  //   games: pbGroup.expand?.games_via_group,
-  //   records: pbGroup.expand?.gameRecords_via_group?.map(
-  //     (pbRecord: PbGameRecord) => ({
-  //       ...pbRecord,
-  //       scores: pbRecord.expand?.gameScores_via_gameRecord,
-  //       gameId: pbRecord.game,
-  //       dateTime: pbDateTimeStrToDate(pbRecord.dateTime),
-  //     }),
-  //   ),
-  // });
 }

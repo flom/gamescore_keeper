@@ -10,7 +10,7 @@ export const MetaSchema = z.object({
 
 export type Meta = z.infer<typeof MetaSchema>;
 
-export function getMetaFields(baseModel: BaseModel): Meta {
+export function mapPbMeta(baseModel: BaseModel): Meta {
   return {
     id: baseModel.id,
     created: baseModel.created,

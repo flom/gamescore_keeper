@@ -1,5 +1,6 @@
-import { MetaSchema } from "@/types/Meta";
+import { mapPbMeta, MetaSchema } from "@/types/Meta";
 import { z } from "zod";
+import type PbGameScore from "@/types/api/PbGameScore";
 import type { PbGameScoreFields } from "@/types/api/PbGameScore";
 
 export const GameScoreSchema = MetaSchema.extend({
@@ -8,6 +9,14 @@ export const GameScoreSchema = MetaSchema.extend({
 });
 
 export type GameScore = z.infer<typeof GameScoreSchema>;
+
+export function mapPbGameScore(pbGameScore: PbGameScore): GameScore {
+  return {
+    ...mapPbMeta(pbGameScore),
+    score: pbGameScore.score,
+    playerId: pbGameScore.player,
+  };
+}
 
 export function gameScoreToPbGameScore(
   gameRecordId: string,
