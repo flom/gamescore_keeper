@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import ListItem from "../compositions/list/ListItem";
+import ListItem from "./compositions/list/ListItem";
 import { Link } from "react-router-dom";
 import type { GameScore } from "@/types/GameScore";
 import type { Game } from "@/types/Game";

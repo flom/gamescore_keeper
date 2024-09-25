@@ -1,17 +1,16 @@
 import type { ReactElement } from "react";
 import { List } from "@/components/compositions/list";
 import ListSeparator from "@/components/compositions/list/ListSeparator";
-import PlayerHeader from "@/components/group/PlayerHeader";
-import GrandTotal from "@/components/group/GrandTotal";
-import SingleGameScore from "@/components/group/SingleGameScore";
-import type { GameRecord } from "@/types/GameRecord";
+import PlayerHeader from "@/components/PlayerHeader";
+import GrandTotal from "@/features/group/components/GrandTotal";
 import type { Group } from "@/types/Group";
+import AllGameScores from "@/features/group/components/AllGameScores";
 
-type GroupOverviewProps = {
+type Props = {
   group: Group;
 };
 
-function GroupOverview({ group }: GroupOverviewProps): ReactElement {
+function GroupOverview({ group }: Props): ReactElement {
   return (
     <List>
       <PlayerHeader group={group} />
@@ -19,9 +18,7 @@ function GroupOverview({ group }: GroupOverviewProps): ReactElement {
 
       <ListSeparator />
 
-      {group.records.map((record: GameRecord) => (
-        <SingleGameScore key={record.id} group={group} gameRecord={record} />
-      ))}
+      <AllGameScores group={group} />
     </List>
   );
 }

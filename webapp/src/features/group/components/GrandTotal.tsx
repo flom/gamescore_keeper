@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import ListItem from "../compositions/list/ListItem";
+import ListItem from "../../../components/compositions/list/ListItem";
 import type { Group } from "@/types/Group";
 import type { GameScore } from "@/types/GameScore";
 import type { GameRecord } from "@/types/GameRecord";

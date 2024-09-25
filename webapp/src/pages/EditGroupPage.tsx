@@ -2,7 +2,7 @@ import type { ReactElement } from "react";
 import Navbar from "@/components/compositions/Navbar";
 import { getGroupLabel } from "@/types/Group";
 import Container from "@/components/compositions/Container";
-import EditGroup from "@/components/group/EditGroup";
+import EditGroup from "@/features/group/components/EditGroup";
 import { useNavigate } from "react-router-dom";
 import useGroup from "@/hooks/useGroup";
 
