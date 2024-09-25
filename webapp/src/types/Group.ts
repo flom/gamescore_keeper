@@ -19,10 +19,10 @@ export const GroupSchema = MetaSchema.extend({
 export type Group = z.infer<typeof GroupSchema>;
 
 export function getGroupLabel(group: Group): string {
-  let groupLabel: string = group.players.map((p) => p.initials).join(" - ");
+  let groupLabel: string = group.name.trim();
 
   if (groupLabel.length === 0) {
-    groupLabel = group.name.trim();
+    groupLabel = group.players.map((p) => p.initials).join(" - ");
   }
   if (groupLabel.length === 0) {
     // fallback

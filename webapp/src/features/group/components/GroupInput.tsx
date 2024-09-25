@@ -14,14 +14,15 @@ import {
 } from "@/components/ui/form";
 import { type Group, GroupSchema } from "@/types/Group";
 
-type PlayersInputProps = {
+type Props = {
   onSubmit: (group: Group) => Promise<void> | void;
 };
 
-function PlayersInput({ onSubmit }: PlayersInputProps): ReactElement {
+function GroupInput({ onSubmit }: Props): ReactElement {
   const form = useForm<Group>({
     resolver: zodResolver(GroupSchema),
     defaultValues: {
+      name: "",
       players: [PlayerSchema.parse({})],
     },
     mode: "onBlur",
@@ -55,6 +56,22 @@ function PlayersInput({ onSubmit }: PlayersInputProps): ReactElement {
         className="mb-2 flex flex-col gap-4"
         onSubmit={handleSubmit(onSubmitForm)}
       >
+        <FormField
+          name="name"
+          render={({ field }): ReactElement => (
+            <FormItem>
+              <FormLabel>Gruppen Name</FormLabel>
+              <FormControl>
+                <Input
+                  spellCheck={false}
+                  autoComplete="off"
+                  inputMode="text"
+                  {...field}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
         {fields.map((field, index) => (
           <div key={field.id} className="grid grid-cols-[3fr_1fr_1fr] gap-2">
             <FormField
@@ -149,4 +166,4 @@ function PlayersInput({ onSubmit }: PlayersInputProps): ReactElement {
   );
 }
 
-export default PlayersInput;
+export default GroupInput;
