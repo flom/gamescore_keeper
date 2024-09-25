@@ -7,7 +7,7 @@ import { type Group, GroupSchema, mapPbGroup } from "@/types/Group";
 import usePocketBase from "@/hooks/usePocketBase";
 import type PocketBase from "pocketbase";
 import type { ListResult } from "pocketbase";
-import { getGroupsKey } from "@/api/queryKeys";
+import { getGroupsKey } from "@/hooks/api/queryKeys";
 import type PbGroup from "@/types/api/PbGroup";
 
 function getGroups(pocketBase: PocketBase): UseQueryOptions<Group[]> {

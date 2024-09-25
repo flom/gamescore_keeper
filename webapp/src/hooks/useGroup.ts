@@ -5,7 +5,7 @@ import {
 } from "@tanstack/react-query";
 import { type Group, mapPbGroup } from "@/types/Group";
 import { useParams } from "react-router-dom";
-import { getGroupKey } from "@/api/queryKeys";
+import { getGroupKey } from "@/hooks/api/queryKeys";
 import type PocketBase from "pocketbase";
 import usePocketBase from "@/hooks/usePocketBase";
 import type PbGroup from "@/types/api/PbGroup";

@@ -1,14 +1,14 @@
 import type { ReactElement } from "react";
-import Navbar from "../components/compositions/Navbar";
-import Container from "../components/compositions/Container";
+import Navbar from "../../components/compositions/Navbar";
+import Container from "../../components/compositions/Container";
 import PlayersInput from "@/components/player/PlayersInput";
 import { useNavigate } from "react-router-dom";
-import groupsHooks from "@/api/groups.hooks";
 import type { Group } from "@/types/Group";
+import useCreateGroup from "@/hooks/useCreateGroup";
 
 function AddGroup(): ReactElement {
   const navigate = useNavigate();
-  const { mutateAsync } = groupsHooks.useCreateGroup();
+  const { mutateAsync } = useCreateGroup();
 
   const onSubmit = async (group: Group): Promise<void> => {
     await mutateAsync({

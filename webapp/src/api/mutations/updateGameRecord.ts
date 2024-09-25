@@ -2,7 +2,7 @@ import type { GameRecord } from "@/types/GameRecord";
 import type { QueryClient, UseMutationOptions } from "@tanstack/react-query";
 import type { Group } from "@/types/Group";
 import store from "@/api/store";
-import { getGroupKey } from "@/api/queryKeys";
+import { getGroupKey } from "@/hooks/api/queryKeys";
 
 export type UpdateGameRecordArgs = {
   groupId: string;

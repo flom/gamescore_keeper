@@ -1,9 +1,9 @@
-import { type ReactElement, useContext, useEffect } from "react";
+import { type ReactElement, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import PocketBaseContext from "@/contexts/PocketBaseContext";
+import usePocketBase from "@/hooks/usePocketBase";
 
 function Root(): ReactElement {
-  const pb = useContext(PocketBaseContext);
+  const pb = usePocketBase();
   const navigate = useNavigate();
 
   useEffect(() => {

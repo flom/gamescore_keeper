@@ -1,9 +1,12 @@
 import type { RecordModel } from "pocketbase";
 
-type PbPlayer = {
+export type PbPlayerFields = {
   name: string;
   initials: string;
   color: string;
-} & RecordModel;
+  group: string;
+};
+
+type PbPlayer = PbPlayerFields & RecordModel;
 
 export default PbPlayer;

@@ -4,6 +4,7 @@ import { mapPbPlayer, PlayerSchema } from "@/types/Player";
 import { GameSchema, mapPbGame } from "@/types/Game";
 import { GameRecordSchema, mapPbGameRecord } from "@/types/GameRecord";
 import type PbGroup from "@/types/api/PbGroup";
+import type { PbGroupFields } from "@/types/api/PbGroup";
 import type PbPlayer from "@/types/api/PbPlayer";
 import type PbGame from "@/types/api/PbGame";
 import type PbGameRecord from "@/types/api/PbGameRecord";
@@ -50,4 +51,11 @@ export function mapPbGroup(pbGroup: PbGroup): Group {
   };
 
   return GroupSchema.parse(group);
+}
+
+export function groupToPbGroup(group: Group, userId: string): PbGroupFields {
+  return {
+    name: group.name,
+    users: [userId],
+  };
 }

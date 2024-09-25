@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Contributions from "./pages/Contributions";
 import GroupsPage from "./app/routes/GroupsPage";
-import AddGroup from "./pages/AddGroup";
+import AddGroup from "./app/routes/AddGroup";
 import LoadingOrError from "@/components/LoadingOrError";
 import GroupPage from "@/app/routes/GroupPage";
 import AddGameRecordPage from "@/app/routes/AddGameRecordPage";

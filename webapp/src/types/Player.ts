@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { mapPbMeta, MetaSchema } from "@/types/Meta";
-import PbPlayer from "@/types/api/PbPlayer";
+import PbPlayer, { PbPlayerFields } from "@/types/api/PbPlayer";
 
 const NAME_MIN_LENGTH = 2;
 const INITIALS_MAX_LENGTH = 3;
@@ -38,5 +38,17 @@ export function mapPbPlayer(pbPlayer: PbPlayer): Player {
     name: pbPlayer.name,
     initials: pbPlayer.initials,
     color: pbPlayer.color,
+  };
+}
+
+export function playerToPbPlayer(
+  player: Player,
+  groupId: string,
+): PbPlayerFields {
+  return {
+    name: player.name,
+    initials: player.initials,
+    color: player.color,
+    group: groupId,
   };
 }

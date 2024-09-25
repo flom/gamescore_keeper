@@ -6,11 +6,11 @@ import {
   useQueryClient,
 } from "@tanstack/react-query";
 import { type GameRecord, gameRecordToPbGameRecord } from "@/types/GameRecord";
-import { getGroupKey } from "@/api/queryKeys";
+import { getGroupKey } from "@/hooks/api/queryKeys";
 import usePocketBase from "@/hooks/usePocketBase";
 import type PocketBase from "pocketbase";
 import type { PbGameRecordFields } from "@/types/api/PbGameRecord";
-import { GameScore, gameScoreToPbGameScore } from "@/types/GameScore";
+import { type GameScore, gameScoreToPbGameScore } from "@/types/GameScore";
 
 type CreateGameRecordArgs = {
   groupId: string;
