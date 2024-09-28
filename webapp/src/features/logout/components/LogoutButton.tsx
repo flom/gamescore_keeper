@@ -16,7 +16,7 @@ function LogoutButton({ onLogout }: LogoutButtonProperties): ReactElement {
 
   return (
     <div className="fixed bottom-2 left-2">
-      <Button variant="destructive" onClick={onLogoutClicked}>
+      <Button variant="outline" onClick={onLogoutClicked}>
         <i className="fa-solid fa-arrow-right-from-bracket" />
         &nbsp; Ausloggen
       </Button>

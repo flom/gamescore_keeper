@@ -1,6 +1,5 @@
-import store from "@/api/store";
 import { getGroupsKey } from "@/hooks/api/queryKeys";
-import type { Group } from "@/types/Group";
+import usePocketBase from "@/hooks/usePocketBase";
 import {
   type QueryClient,
   useMutation,
@@ -8,19 +7,19 @@ import {
   type UseMutationResult,
   useQueryClient,
 } from "@tanstack/react-query";
+import type PocketBase from "pocketbase";
 
 export type DeleteGroupArgs = {
   groupId: string;
 };
 
 export function deleteGroup(
+  pocketBase: PocketBase,
   queryClient: QueryClient,
 ): UseMutationOptions<unknown, unknown, DeleteGroupArgs> {
   return {
     mutationFn: async (args: DeleteGroupArgs): Promise<void> => {
-      store.groups = store.groups.filter(
-        (group: Group) => group.id !== args.groupId,
-      );
+      await pocketBase.collection("groups").delete(args.groupId);
 
       await queryClient.invalidateQueries({
         queryKey: getGroupsKey(),
@@ -35,6 +34,7 @@ export function useDeleteGroup(): UseMutationResult<
   DeleteGroupArgs
 > {
   const queryClient = useQueryClient();
+  const pocketBase = usePocketBase();
 
-  return useMutation(deleteGroup(queryClient));
+  return useMutation(deleteGroup(pocketBase, queryClient));
 }
