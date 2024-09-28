@@ -1,7 +1,10 @@
 import type { RecordModel } from "pocketbase";
 
-type PbGame = {
+export type PbGameFields = {
   name: string;
-} & RecordModel;
+  group: string;
+};
+
+type PbGame = PbGameFields & RecordModel;
 
 export default PbGame;
