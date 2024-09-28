@@ -1,3 +1,4 @@
+import { useDeleteGameRecord } from "@/features/edit-game/api/deleteGameRecord";
 import type { ReactElement } from "react";
 import GameRecordForm from "@/features/edit-game/components/GameRecordForm";
 import { Button } from "@/components/ui/button";
@@ -27,7 +28,7 @@ function EditGameRecordInput({
   onFinished,
 }: EditGameRecordInputProps): ReactElement {
   const { mutateAsync: updateGameRecord } = groupHooks.useUpdateGameRecord();
-  const { mutateAsync: deleteGameRecord } = groupHooks.useDeleteGameRecord();
+  const { mutateAsync: deleteGameRecord } = useDeleteGameRecord();
 
   const onSubmit = async (updatedGameRecord: GameRecord): Promise<void> => {
     await updateGameRecord({
