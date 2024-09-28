@@ -50,6 +50,9 @@ export default [
       },
 
       parser: tsParser,
+      parserOptions: {
+        project: ["./tsconfig.json", "./tsconfig.cypress.json"],
+      }
     },
 
     settings: {
