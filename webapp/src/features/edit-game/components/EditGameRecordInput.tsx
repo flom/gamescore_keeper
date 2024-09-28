@@ -1,10 +1,4 @@
-import { useDeleteGameRecord } from "@/features/edit-game/api/deleteGameRecord";
-import type { ReactElement } from "react";
-import GameRecordForm from "@/features/edit-game/components/GameRecordForm";
 import { Button } from "@/components/ui/button";
-import type { GameRecord } from "@/types/GameRecord";
-import type { Group } from "@/types/Group";
-import groupHooks from "@/api/group.hooks";
 import {
   Dialog,
   DialogClose,
@@ -15,6 +9,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { useDeleteGameRecord } from "@/features/edit-game/api/deleteGameRecord";
+import { useUpdateGameRecord } from "@/features/edit-game/api/updateGameRecord";
+import GameRecordForm from "@/features/edit-game/components/GameRecordForm";
+import type { GameRecord } from "@/types/GameRecord";
+import type { Group } from "@/types/Group";
+import type { ReactElement } from "react";
 
 type EditGameRecordInputProps = {
   group: Group;
@@ -27,7 +27,7 @@ function EditGameRecordInput({
   gameRecord,
   onFinished,
 }: EditGameRecordInputProps): ReactElement {
-  const { mutateAsync: updateGameRecord } = groupHooks.useUpdateGameRecord();
+  const { mutateAsync: updateGameRecord } = useUpdateGameRecord();
   const { mutateAsync: deleteGameRecord } = useDeleteGameRecord();
 
   const onSubmit = async (updatedGameRecord: GameRecord): Promise<void> => {
