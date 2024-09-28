@@ -9,11 +9,11 @@ import {
 } from "@tanstack/react-query";
 import type PocketBase from "pocketbase";
 
-export type DeleteGroupArgs = {
+type DeleteGroupArgs = {
   groupId: string;
 };
 
-export function deleteGroup(
+function deleteGroup(
   pocketBase: PocketBase,
   queryClient: QueryClient,
 ): UseMutationOptions<unknown, unknown, DeleteGroupArgs> {

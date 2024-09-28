@@ -5,7 +5,7 @@ import type PbGameRecord from "@/types/api/PbGameRecord";
 
 export type PbGroupFields = {
   name: string;
-  users: string[];
+  users?: string[];
   expand?: {
     players_via_group?: PbPlayer[];
     games_via_group?: PbGame[];

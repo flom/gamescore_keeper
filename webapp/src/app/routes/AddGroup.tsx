@@ -1,7 +1,8 @@
+import { Button } from "@/components/ui/button";
 import type { ReactElement } from "react";
 import Navbar from "../../components/compositions/Navbar";
 import Container from "../../components/compositions/Container";
-import GroupInput from "@/features/group/components/GroupInput";
+import GroupForm from "@/features/group/components/GroupForm";
 import { useNavigate } from "react-router-dom";
 import type { Group } from "@/types/Group";
 import useCreateGroup from "@/hooks/useCreateGroup";
@@ -22,7 +23,16 @@ function AddGroup(): ReactElement {
       <Navbar title="Neue Gruppe" backButtonTo="/groups" />
       <Container>
         <div className="flex flex-col gap-2 p-2">
-          <GroupInput onSubmit={onSubmit} />
+          <GroupForm onSubmit={onSubmit}>
+            <Button
+              type="submit"
+              size="lg"
+              className="w-full"
+              data-testid="PlayersInputSubmit"
+            >
+              Gruppe erstellen
+            </Button>
+          </GroupForm>
         </div>
       </Container>
     </>

@@ -53,9 +53,12 @@ export function mapPbGroup(pbGroup: PbGroup): Group {
   return GroupSchema.parse(group);
 }
 
-export function groupToPbGroup(group: Group, userId: string): PbGroupFields {
+export function groupToPbGroup(
+  group: Group,
+  userIds?: string[],
+): PbGroupFields {
   return {
     name: group.name,
-    users: [userId],
+    users: userIds,
   };
 }

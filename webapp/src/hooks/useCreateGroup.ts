@@ -28,7 +28,7 @@ function createGroup(
         return;
       }
 
-      const pbGroup: PbGroupFields = groupToPbGroup(args.group, userId);
+      const pbGroup: PbGroupFields = groupToPbGroup(args.group, [userId]);
       const newPbGroup = await pocketBase.collection("groups").create(pbGroup);
 
       const promises: Promise<unknown>[] = args.group.players.map(
