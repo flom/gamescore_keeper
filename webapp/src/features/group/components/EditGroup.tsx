@@ -1,4 +1,3 @@
-import type { ReactElement } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -10,8 +9,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { useDeleteGroup } from "@/features/group/api/deleteGroup";
 import { getGroupLabel, type Group } from "@/types/Group";
-import groupsHooks from "@/api/groups.hooks";
+import type { ReactElement } from "react";
 
 type EditGroupProps = {
   group: Group;
@@ -19,7 +19,7 @@ type EditGroupProps = {
 };
 
 function EditGroup({ group, onFinished }: EditGroupProps): ReactElement {
-  const { mutateAsync: deleteGroup } = groupsHooks.useDeleteGroup();
+  const { mutateAsync: deleteGroup } = useDeleteGroup();
 
   const onDeleteGroup = async (): Promise<void> => {
     await deleteGroup({ groupId: group.id });
