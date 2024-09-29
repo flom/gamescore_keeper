@@ -1,4 +1,4 @@
-describe("LoginPage", () => {
+describe("Login page", () => {
   it("should redirect user when logged in successfully", () => {
     cy.visit("/");
 
