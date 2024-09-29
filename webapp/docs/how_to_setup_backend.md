@@ -1,8 +1,12 @@
 # How-To Setup the Backend
 
-* Download [Pocketbase](https://pocketbase.io/)
-* Store the executable in `/pocketbase`
-* Run `./pocketbase serve`
+- Download [Pocketbase](https://pocketbase.io/)
+- Store the executable in `/pocketbase`
+- Run `./pocketbase serve`
+
+## Create User for e2e Tests
+
+- In PocketBase admin UI create user with username and password matching `/cypress/fixtures/credentials.json`
 
 ## Remarks
 

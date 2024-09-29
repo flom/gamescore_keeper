@@ -5,5 +5,5 @@
     "types": ["cypress", "node"],
     "strictNullChecks": true
   },
-  "include": ["cypress/**/*.ts"]
+  "include": ["**/*.ts"]
 }
