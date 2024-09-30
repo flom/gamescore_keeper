@@ -11,7 +11,12 @@ function GroupsList({ groups }: GroupsListProps): ReactElement {
   return (
     <List>
       {groups.map((group: Group) => (
-        <ListItem key={group.id} component={Link} to={`/groups/${group.id}`}>
+        <ListItem
+          key={group.id}
+          component={Link}
+          to={`/groups/${group.id}`}
+          data-testid={`GroupsListListItem${group.name}`}
+        >
           {getGroupLabel(group)}
         </ListItem>
       ))}

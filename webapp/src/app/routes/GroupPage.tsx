@@ -5,8 +5,11 @@ import GroupOverview from "@/features/group/components/GroupOverview";
 import useGroup from "@/hooks/useGroup";
 
 function GroupPage(): ReactElement {
-  const { data: group } = useGroup();
+  const { data: group, isFetched } = useGroup();
 
+  if (!isFetched) {
+    return <>Gruppe am laden...</>;
+  }
   if (group === undefined) {
     return <>Gruppe nicht gefunden.</>;
   }

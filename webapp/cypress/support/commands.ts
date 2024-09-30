@@ -25,7 +25,9 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 //
-export {};
+import PocketBase from "pocketbase";
+import { v4 } from "uuid";
+import type PbGroup from "../../src/types/api/PbGroup";
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -34,9 +36,7 @@ declare global {
     interface Chainable {
       login: () => Chainable<void>;
       deleteAllGroups: () => Chainable<void>;
-      // drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-      // dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-      // visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
+      createGroup: (args?: CreateGroupArgs) => Chainable<PbGroup>;
     }
   }
 }
@@ -85,6 +85,35 @@ Cypress.Commands.add("deleteAllGroups", () => {
           }
         });
       });
+    },
+  );
+});
+
+type CreateGroupArgs = {
+  groupName?: string;
+};
+
+Cypress.Commands.add("createGroup", (args?: CreateGroupArgs) => {
+  const fullArgs: Required<CreateGroupArgs> = {
+    ...args,
+    groupName: v4(),
+  };
+
+  cy.fixture("credentials").then(
+    async (credentials: { username: string; password: string }) => {
+      const pb = new PocketBase("/");
+
+      await pb
+        .collection("users")
+        .authWithPassword(credentials.username, credentials.password);
+      const userId = pb.authStore.model?.id as string | undefined;
+
+      const createdGroup: PbGroup = await pb.collection("groups").create({
+        name: fullArgs.groupName,
+        users: [userId],
+      });
+
+      return createdGroup;
     },
   );
 });

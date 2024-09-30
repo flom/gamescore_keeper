@@ -50,7 +50,12 @@ function EditGroup({ group, onFinished }: EditGroupProps): ReactElement {
       <div className="mt-2">
         <Dialog>
           <DialogTrigger asChild>
-            <Button size="lg" variant="link" className="w-full">
+            <Button
+              size="lg"
+              variant="link"
+              className="w-full"
+              data-testid="EditGroupDeleteButton"
+            >
               Gruppe löschen
             </Button>
           </DialogTrigger>
@@ -69,7 +74,11 @@ function EditGroup({ group, onFinished }: EditGroupProps): ReactElement {
             </div>
             <DialogFooter>
               <DialogClose asChild>
-                <Button variant="destructive" onClick={onDeleteGroup}>
+                <Button
+                  variant="destructive"
+                  onClick={onDeleteGroup}
+                  data-testid="EditGroupDeleteConfirmButton"
+                >
                   Gruppe löschen
                 </Button>
               </DialogClose>

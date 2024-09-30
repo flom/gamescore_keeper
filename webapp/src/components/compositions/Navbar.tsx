@@ -29,7 +29,7 @@ function Navbar({
           {editButtonTo ? (
             <IconLink
               to={editButtonTo}
-              data-testid="NavbarBackButton"
+              data-testid="NavbarEditButton"
               variant="link"
             >
               <i className="fa-solid fa-pen-to-square" />
