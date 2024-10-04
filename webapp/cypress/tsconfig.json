@@ -1,9 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["es5", "dom"],
+    "target": "ESNext",
+    "lib": ["ESNext", "dom"],
     "types": ["cypress", "node"],
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "skipLibCheck": true,
+    "moduleResolution": "Node",
+    "baseUrl": "..",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
   },
   "include": ["**/*.ts"]
 }

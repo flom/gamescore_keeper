@@ -55,6 +55,7 @@ function PlayerScoreInput({
                     form.setValue(`scores.${index}.score`, currentScore);
                     setCurrentScore(Math.max(currentScore - 1, 0));
                   }}
+                  data-testid="PlayerScoreInputScoreButton"
                 >
                   {currentScore}
                 </Button>

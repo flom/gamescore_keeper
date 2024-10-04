@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { mapPbMeta, MetaSchema } from "@/types/Meta";
-import PbPlayer, { PbPlayerFields } from "@/types/api/PbPlayer";
+import type { PbPlayerFields } from "@/types/api/PbPlayer";
+import type PbPlayer from "@/types/api/PbPlayer";
 
 const NAME_MIN_LENGTH = 2;
 const INITIALS_MAX_LENGTH = 3;

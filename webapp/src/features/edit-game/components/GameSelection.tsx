@@ -1,30 +1,29 @@
-import { type ReactElement, useState } from "react";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { FormControl, FormItem, FormLabel } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import type { Game } from "@/types/Game";
-import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 import {
   Command,
-  CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command";
+import { FormControl, FormItem, FormLabel } from "@/components/ui/form";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
+import type { Game } from "@/types/Game";
+import type { GameRecord } from "@/types/GameRecord";
 import type { Group } from "@/types/Group";
+import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
+import { type ReactElement, useState } from "react";
 import type {
   ControllerRenderProps,
   FieldValues,
   UseFormReturn,
 } from "react-hook-form";
-import type { GameRecord } from "@/types/GameRecord";
 import { NIL } from "uuid";
 
 type GameSelectionProps = {
@@ -60,6 +59,7 @@ function GameSelection({
                 !field.value && "text-muted-foreground",
               )}
               disabled={isDisabled}
+              data-testid="GameSelectionButton"
             >
               {field.value
                 ? (group.games.find((game: Game) => game.id === field.value)
@@ -75,6 +75,7 @@ function GameSelection({
               placeholder="Spiel suchen oder erstellen"
               className="h-9"
               onValueChange={setSearchValue}
+              data-testid="GameSelectionSearchInput"
             />
             <CommandList>
               <CommandGroup>

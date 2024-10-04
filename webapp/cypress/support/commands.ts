@@ -1,4 +1,8 @@
 /// <reference types="cypress" />
+import { createGroup } from "@/hooks/useCreateGroup";
+import type PbGroup from "@/types/api/PbGroup";
+import { type Group, GroupSchema } from "@/types/Group";
+import { type Player, PlayerSchema } from "@/types/Player";
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite
@@ -27,7 +31,6 @@
 //
 import PocketBase from "pocketbase";
 import { v4 } from "uuid";
-import type PbGroup from "../../src/types/api/PbGroup";
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
@@ -91,12 +94,14 @@ Cypress.Commands.add("deleteAllGroups", () => {
 
 type CreateGroupArgs = {
   groupName?: string;
+  players?: Partial<Player>[];
 };
 
 Cypress.Commands.add("createGroup", (args?: CreateGroupArgs) => {
   const fullArgs: Required<CreateGroupArgs> = {
-    ...args,
     groupName: v4(),
+    players: [],
+    ...args,
   };
 
   cy.fixture("credentials").then(
@@ -106,11 +111,13 @@ Cypress.Commands.add("createGroup", (args?: CreateGroupArgs) => {
       await pb
         .collection("users")
         .authWithPassword(credentials.username, credentials.password);
-      const userId = pb.authStore.model?.id as string | undefined;
 
-      const createdGroup: PbGroup = await pb.collection("groups").create({
+      const partialGroup: Partial<Group> = {
         name: fullArgs.groupName,
-        users: [userId],
+        players: PlayerSchema.array().parse(fullArgs.players),
+      };
+      const createdGroup: PbGroup = await createGroup(pb, {
+        group: GroupSchema.parse(partialGroup),
       });
 
       return createdGroup;

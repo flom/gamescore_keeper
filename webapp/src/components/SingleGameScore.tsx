@@ -50,6 +50,7 @@ function SingleGameScore({
       to={to ?? `/groups/${group.id}/game/${game.id}`}
       right={scoreTable}
       top={dateLabel}
+      data-testid="SingleGameScoreItem"
     >
       {game.name}
     </ListItem>
