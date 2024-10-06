@@ -12,13 +12,9 @@ describe("Groups page", () => {
   it("lists groups after they are created", () => {
     const groupName = v4();
 
-    cy.visit("/groups")
-      .get("[data-testid=NavbarAddButton]")
-      .click()
-      .get("[name=name]")
-      .type(groupName)
-      .get("[type=submit]")
-      .click();
+    cy.visit("/groups");
+    cy.findByTestId("NavbarAddButton").click();
+    cy.get("[name=name]").type(groupName).get("[type=submit]").click();
 
     cy.url().should("match", /\/groups$/);
     cy.contains(groupName);
@@ -27,17 +23,12 @@ describe("Groups page", () => {
   it("adds group with multiple players", () => {
     const groupName = v4();
 
-    cy.visit("/groups/add")
-      .get("[name=name]")
-      .type(groupName)
-      .get("[data-testid=PlayersInputAddPlayer]")
-      .click()
-      .click()
-      .get("[type=submit]")
-      .click();
+    cy.visit("/groups/add").get("[name=name]").type(groupName);
+    cy.findByTestId("PlayersInputAddPlayer").click().click();
+    cy.get("[type=submit]").click();
 
     cy.url().should("match", /\/groups$/);
-    cy.get(`[data-testid=GroupsListListItem${groupName}]`).click();
+    cy.findByTestId(`GroupsListListItem${groupName}`).click();
     cy.url().should("match", /\/groups\/.+/);
   });
 });

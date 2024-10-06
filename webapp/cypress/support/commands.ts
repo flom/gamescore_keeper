@@ -1,4 +1,6 @@
 /// <reference types="cypress" />
+// eslint-disable-next-line import/no-extraneous-dependencies
+import "@testing-library/cypress/add-commands";
 import type PbGroup from "@/types/api/PbGroup";
 import {
   type CreateGroupArgs,

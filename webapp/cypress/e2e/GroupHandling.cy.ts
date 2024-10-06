@@ -13,14 +13,11 @@ describe("Group page", () => {
     cy.createGroup()
       .as("group")
       .get<PbGroup>("@group")
-      .then((group: PbGroup) => cy.visit(`/groups/${group.id}`))
-      .get("[data-testid=NavbarEditButton]")
-      .click()
-      .get("[data-testid=EditGroupDeleteButton]")
-      .click()
-      .get("[data-testid=EditGroupDeleteConfirmButton]")
-      .click()
-      .get<PbGroup>("@group")
+      .then((group: PbGroup) => cy.visit(`/groups/${group.id}`));
+    cy.findByTestId("NavbarEditButton").click();
+    cy.findByTestId("EditGroupDeleteButton").click();
+    cy.findByTestId("EditGroupDeleteConfirmButton").click();
+    cy.get<PbGroup>("@group")
       .then((group: PbGroup) =>
         cy.get(`[data-testid=GroupsListListItem${group.name}]`),
       )
@@ -40,21 +37,16 @@ describe("Group page", () => {
     })
       .as("group")
       .get<PbGroup>("@group")
-      .then((group: PbGroup) => cy.visit(`/groups/${group.id}`))
-      .get("[data-testid=NavbarAddButton]")
-      .click()
-      .get("[data-testid=GameSelectionButton]")
-      .click()
-      .get("[data-testid=GameSelectionSearchInput]")
-      .type("TestGame{enter}")
-      .get("[data-testid=PlayerScoreInputScoreButton]:eq(0)")
-      .click()
-      .get("[data-testid=PlayerScoreInputScoreButton]:eq(1)")
-      .click()
-      .get("[type=submit]")
-      .click();
+      .then((group: PbGroup) => cy.visit(`/groups/${group.id}`));
+
+    cy.findByTestId("NavbarAddButton").click();
+    cy.findByTestId("GameSelectionButton").click();
+    cy.findByTestId("GameSelectionSearchInput").type("TestGame{enter}");
+    cy.findAllByTestId("PlayerScoreInputScoreButton").first().click();
+    cy.findAllByTestId("PlayerScoreInputScoreButton").eq(1).click();
+    cy.get("[type=submit]").click();
 
     cy.url({ timeout: 10_000 }).should("not.include", "add-game");
-    cy.get("[data-testid=SingleGameScoreItem]").its("length").should("eq", 1);
+    cy.findAllByTestId("SingleGameScoreItem").its("length").should("eq", 1);
   });
 });
