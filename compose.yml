@@ -1,8 +1,15 @@
 services:
   pocketbase:
+    image: flom/gamescore-keeper-pocketbase
     build: pocketbase
     ports:
       - "8090:8080"
     volumes:
       - ./pocketbase/pb_migrations:/pb/pb_migrations
       - ./pocketbase/pb_data:/pb/pb_data
+
+  webapp:
+    image: flom/gamescore-keeper-frontend
+    build: webapp
+    ports:
+      - "3000:80"
