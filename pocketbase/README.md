@@ -5,4 +5,5 @@
 
 ## Docker
 
-- `> docker build -t [name] .`
+- `> docker build -t nephazz/gamescore-keeper-pocketbase .`
+- `> docker buildx build --platform linux/amd64 -t nephazz/gamescore-keeper-pocketbase:linux .`

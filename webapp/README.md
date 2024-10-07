@@ -39,3 +39,7 @@
 
 - `pnpm dlx shadcn-ui@latest add [component]`
 - project structure based on https://github.com/alan2207/bulletproof-react/tree/master
+
+## Docker
+
+- `> docker buildx build --platform linux/amd64 -t nephazz/gamescore-keeper-frontend:linux .`

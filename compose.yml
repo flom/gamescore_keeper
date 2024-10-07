@@ -1,6 +1,6 @@
 services:
   pocketbase:
-    image: flom/gamescore-keeper-pocketbase
+    image: nephazz/gamescore-keeper-pocketbase
     build: pocketbase
     ports:
       - "8090:8080"
@@ -9,7 +9,7 @@ services:
       - ./pocketbase/pb_data:/pb/pb_data
 
   webapp:
-    image: flom/gamescore-keeper-frontend
+    image: nephazz/gamescore-keeper-frontend
     build: webapp
     ports:
       - "3000:80"
