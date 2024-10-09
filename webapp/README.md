@@ -42,4 +42,9 @@
 
 ## Docker
 
-- `> docker buildx build --platform linux/amd64 -t nephazz/gamescore-keeper-frontend:linux .`
+```shell
+docker buildx build --platform linux/amd64 -t nephazz/gamescore-keeper-frontend:linux .
+```
+```shell
+docker push nephazz/gamescore-keeper-frontend:linux
+```

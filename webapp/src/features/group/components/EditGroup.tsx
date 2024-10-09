@@ -44,7 +44,7 @@ function EditGroup({ group, onFinished }: EditGroupProps): ReactElement {
           className="w-full"
           data-testid="PlayersInputSubmit"
         >
-          Gruppe erstellen
+          Speichern
         </Button>
       </div>
       <div className="mt-2">
