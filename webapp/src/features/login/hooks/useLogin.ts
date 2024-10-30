@@ -1,3 +1,4 @@
+import { STORAGE_CREDENTIALS } from "@/features/login/utils/constants";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLoginUser } from "@/features/login/api/loginUser";
@@ -17,6 +18,13 @@ export default function useLogin(): UseLoginResult {
       setInvalidCredentials(false);
       try {
         await loginUser(userName, password);
+        localStorage.setItem(
+          STORAGE_CREDENTIALS,
+          JSON.stringify({
+            userName,
+            password,
+          }),
+        );
         navigate("/");
       } catch {
         setInvalidCredentials(true);

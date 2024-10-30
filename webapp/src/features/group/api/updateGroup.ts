@@ -1,6 +1,6 @@
 import { getGroupKey } from "@/hooks/api/queryKeys";
 import usePocketBase from "@/hooks/usePocketBase";
-import { Group, groupToPbGroup } from "@/types/Group";
+import { type Group, groupToPbGroup } from "@/types/Group";
 import {
   type QueryClient,
   useMutation,

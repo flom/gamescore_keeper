@@ -1,3 +1,4 @@
+import { useDefaultCredentials } from "@/features/login/hooks/useDefaultCredentials";
 import type { ReactElement } from "react";
 import {
   Form,
@@ -21,9 +22,11 @@ type LoginFormProps = {
 };
 
 function LoginForm({ onSubmit }: LoginFormProps): ReactElement {
+  const defaultValues = useDefaultCredentials();
+
   const form = useForm<LoginFields>({
     resolver: zodResolver(LoginFieldsSchema),
-    defaultValues: LoginFieldsSchema.parse({}),
+    defaultValues: LoginFieldsSchema.parse(defaultValues),
   });
 
   return (
