@@ -7,19 +7,7 @@ function Root(): ReactElement {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (pb.authStore.isValid) {
-      pb.collection("users")
-        .authRefresh()
-        .catch((error: unknown) => {
-          const knownError = error as { status: number };
-          if (knownError.status === 0) {
-            // request cancelled
-            return;
-          }
-          pb.authStore.clear();
-          navigate("/login");
-        });
-    } else {
+    if (!pb.authStore.isValid) {
       navigate("/login");
     }
   }, [pb, navigate]);

@@ -1,8 +1,9 @@
+import { refreshAuth } from "@/lib/PocketBase";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { registerSW } from "virtual:pwa-register";
-import App from "@/App";
+import App from "@/app/App";
 import "./index.css";
 
 registerSW();
@@ -28,3 +29,9 @@ if (container) {
     </StrictMode>,
   );
 }
+
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") {
+    refreshAuth();
+  }
+});

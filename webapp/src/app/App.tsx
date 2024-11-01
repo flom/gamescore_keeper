@@ -1,9 +1,10 @@
-import { type ReactElement, Suspense } from "react";
+import { refreshAuth } from "@/lib/PocketBase";
+import { type ReactElement, Suspense, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import LandingPage from "./pages/LandingPage";
-import Contributions from "./pages/Contributions";
-import GroupsPage from "./app/routes/GroupsPage";
-import AddGroup from "./app/routes/AddGroup";
+import LandingPage from "../pages/LandingPage";
+import Contributions from "../pages/Contributions";
+import GroupsPage from "./routes/GroupsPage";
+import AddGroup from "./routes/AddGroup";
 import LoadingOrError from "@/components/LoadingOrError";
 import GroupPage from "@/app/routes/GroupPage";
 import AddGameRecordPage from "@/app/routes/AddGameRecordPage";
@@ -14,6 +15,10 @@ import LoginPage from "@/app/routes/LoginPage";
 import Root from "@/pages/Root";
 
 export default function App(): ReactElement {
+  useEffect(() => {
+    refreshAuth();
+  }, []);
+
   return (
     <BrowserRouter>
       <Suspense fallback={<LoadingOrError />}>

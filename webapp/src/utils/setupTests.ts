@@ -3,7 +3,7 @@ import mediaQuery from "css-mediaquery";
 import {
   DESKTOP_RESOLUTION_HEIGHT,
   DESKTOP_RESOLUTION_WIDTH,
-} from "@/testUtils";
+} from "@/utils/testUtils";
 import "whatwg-fetch";
 import server from "@/mocks/server";
 

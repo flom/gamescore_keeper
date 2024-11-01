@@ -1,6 +1,6 @@
 import type PocketBase from "pocketbase";
 import { useContext } from "react";
-import PocketBaseContext from "@/contexts/PocketBaseContext";
+import PocketBaseContext from "@/lib/PocketBase";
 
 function usePocketBase(): PocketBase {
   return useContext(PocketBaseContext);
