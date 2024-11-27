@@ -1,3 +1,5 @@
+import { GameScore } from "@/types/GameScore";
+import { Player } from "@/types/Player";
 import type { ReactElement } from "react";
 import Navbar from "@/components/compositions/Navbar";
 import Container from "@/components/compositions/Container";
@@ -69,6 +71,12 @@ function validate(
   if (gameRecord === undefined) {
     return { isValid: false, invalidView: <>GameRecord not found</> };
   }
+  // ensures that the scores are sorted the same way as the players
+  gameRecord.scores.sort((a: GameScore, b: GameScore) => {
+    const aIndex = group.players.findIndex((p: Player) => p.id === a.playerId);
+    const bIndex = group.players.findIndex((p: Player) => p.id === b.playerId);
+    return aIndex - bIndex;
+  });
   const game: Game | undefined = group.games.find(
     (g: Game) => g.id === gameRecord.gameId,
   );
