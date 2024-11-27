@@ -1,3 +1,4 @@
+import { Player } from "@/types/Player";
 import { type ReactElement, useState } from "react";
 import {
   FormControl,
@@ -32,38 +33,46 @@ function PlayerScoreInput({
 
   return (
     <div className="flex flex-row gap-2">
-      {fields.map((field, index) => (
-        <FormField
-          key={field.id}
-          name={`scores.${index}.score`}
-          render={(): ReactElement => (
-            <FormItem>
-              <FormLabel>{group.players[index].name}</FormLabel>
-              <FormControl>
-                <Input
-                  type="number"
-                  {...register(`scores.${index}.score`, {
-                    valueAsNumber: true,
-                  })}
-                />
-              </FormControl>
-              <FormControl>
-                <Button
-                  variant="secondary"
-                  type="button"
-                  onClick={(): void => {
-                    form.setValue(`scores.${index}.score`, currentScore);
-                    setCurrentScore(Math.max(currentScore - 1, 0));
-                  }}
-                  data-testid="PlayerScoreInputScoreButton"
-                >
-                  {currentScore}
-                </Button>
-              </FormControl>
-            </FormItem>
-          )}
-        />
-      ))}
+      {fields.map((field, index) => {
+        const player: Player | undefined = group.players.find(
+          (p: Player) => p.id === field.playerId,
+        );
+        if (player === undefined) {
+          return <div key={field.id}>Error</div>;
+        }
+        return (
+          <FormField
+            key={field.id}
+            name={`scores.${index}.score`}
+            render={(): ReactElement => (
+              <FormItem>
+                <FormLabel>{player.name}</FormLabel>
+                <FormControl>
+                  <Input
+                    type="number"
+                    {...register(`scores.${index}.score`, {
+                      valueAsNumber: true,
+                    })}
+                  />
+                </FormControl>
+                <FormControl>
+                  <Button
+                    variant="secondary"
+                    type="button"
+                    onClick={(): void => {
+                      form.setValue(`scores.${index}.score`, currentScore);
+                      setCurrentScore(Math.max(currentScore - 1, 0));
+                    }}
+                    data-testid="PlayerScoreInputScoreButton"
+                  >
+                    {currentScore}
+                  </Button>
+                </FormControl>
+              </FormItem>
+            )}
+          />
+        );
+      })}
       <FormItem>
         <FormLabel>&nbsp;</FormLabel>
         <FormControl>
