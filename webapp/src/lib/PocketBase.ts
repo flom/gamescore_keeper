@@ -8,7 +8,6 @@ export default PocketBaseContext;
 
 export function refreshAuth(): void {
   if (pb.authStore.isValid) {
-    console.log("refreshAuth");
     pb.collection("users")
       .authRefresh()
       .catch((error: unknown) => {
