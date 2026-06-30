@@ -1,5 +1,5 @@
-import { GameScore } from "@/types/GameScore";
-import { Player } from "@/types/Player";
+import type { GameScore } from "@/types/GameScore";
+import type { Player } from "@/types/Player";
 import type { ReactElement } from "react";
 import Navbar from "@/components/compositions/Navbar";
 import Container from "@/components/compositions/Container";
